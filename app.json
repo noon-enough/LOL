@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/fight/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "l-tab-bar": "/miniprogram_npm/lin-ui/tab-bar/index"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#2c2c2c",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "custom": true,
+    "list": [
+      {
+        "pagePath":"pages/index/index",
+        "text":"排位",
+        "iconPath":"/assets/tabbar/5v5.png",
+        "selectedIconPath":"/assets/tabbar/5v5-selected.png"
+      },
+      {
+        "pagePath":"pages/fight/index",
+        "text":"排位",
+        "iconPath":"/assets/tabbar/fight.png",
+        "selectedIconPath":"/assets/tabbar/fight-selected.png"
+      }
+    ]
+  }
+}

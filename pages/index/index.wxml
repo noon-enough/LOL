@@ -1,0 +1,8 @@
+<l-tab-bar
+        bg-color="#101c42"
+        text-color="#8a8a8a"
+        text-selected-color="#d7a75f"
+        list="{{list}}"
+/>
+
+<image src="/assets/tabbar/double.svg" style="color: red;"/>

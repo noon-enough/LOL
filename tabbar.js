@@ -1,0 +1,32 @@
+export default [
+    {
+        pagePath:"/pages/home/index",
+        text:"5v5排位",
+        iconPath:"/assets/icons/5v5.png",
+        selectedIconPath:"/assets/tabbar/5v5-selected.png"
+    },
+    {
+        pagePath:"/pages/hex/index",
+        text:"大乱斗",
+        iconPath:"/assets/tabbar/fight.png",
+        selectedIconPath:"/assets/tabbar/fight-selected.png"
+    },
+    {
+        pagePath:"/pages/mine/index",
+        text:"斗罗大陆",
+        iconPath:"/assets/tabbar/arena.png",
+        selectedIconPath:"/assets/tabbar/arena-selected.png"
+    },
+    {
+        pagePath:"/pages/hero/index",
+        text:"英雄",
+        iconPath:"/assets/tabbar/hero.png",
+        selectedIconPath:"/assets/tabbar/hero-selected.png"
+    },
+    {
+        pagePath:"/pages/equipment/index",
+        text:"装备",
+        iconPath:"/assets/tabbar/equipment.png",
+        selectedIconPath:"/assets/tabbar/equipment-selected.png"
+    }
+]
