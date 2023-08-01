@@ -1,4 +1,6 @@
 {
+  "navigationBarTitleText": "大乱斗数据排行",
   "usingComponents": {
+    "table-fight": "/components/table-fight/index"
   }
 }

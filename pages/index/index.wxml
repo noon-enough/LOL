@@ -4,5 +4,31 @@
         text-selected-color="#d7a75f"
         list="{{list}}"
 />
-
-<image src="/assets/tabbar/double.svg" style="color: red;"/>
+<view class="component-switch-filter">
+    <view wx:for="{{positions}}"
+          wx:for-item="position"
+          wx:key="i"
+          bind:tap="onSelect"
+          data-type="{{position.type}}"
+          class="{{lane ===  position.type ? 'active': ''}}">{{position.name}}</view>
+</view>
+<t-pull-down-refresh
+        value="{{isRefresh}}"
+        loadingProps="{{loadingProps}}"
+        loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
+        bind:refresh="onPullDownRefresh"
+        bind:scroll="onScroll"
+        using-custom-navbar="{{true}}"
+>
+    <view class="container" style="margin-bottom: 200rpx;">
+        <table
+                headers="{{tableHeader}}"
+                data="{{ ranking }}"
+                stripe="{{ stripe }}"
+                border="{{ border }}"
+                cell-class-name="cell-name"
+                row-class-name="row-name"
+                header-row-class-name="table-header"
+        />
+    </view>
+</t-pull-down-refresh>

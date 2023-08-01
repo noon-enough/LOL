@@ -1,4 +1,8 @@
 {
+  "navigationBarTitleText": "峡谷排位",
   "usingComponents": {
+    "t-tabs": "/miniprogram_npm/tdesign-miniprogram/tabs/tabs",
+    "t-tab-panel": "/miniprogram_npm/tdesign-miniprogram/tab-panel/tab-panel",
+    "table": "/components/table/index"
   }
 }

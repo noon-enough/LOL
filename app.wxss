@@ -1,0 +1,68 @@
+page {
+    background: #101c42;
+}
+
+.container {
+    background: #0b1536;
+    width: 100%;
+    overflow-y:scroll;
+    color: #fcf0f4;
+}
+
+.component-switch-filter, .component-switch-filter2 {
+    display: inline-block;
+    vertical-align: middle;
+    background-color: transparent;
+    border: none;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    margin-left: 20rpx;
+}
+
+.component-switch-filter2 view.active,
+.component-switch-filter view.active {
+    color: #b59758;
+    border: 2rpx solid #b59758;
+    z-index: 2;
+}
+
+.component-switch-filter2 view, .component-switch-filter view {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 20rpx;
+    height: 60rpx;
+    font-size: 28rpx;
+    background: #191d24;
+    border: 2rpx solid #313537;
+    margin-right: -2rpx;
+    color: #5e625a;
+    box-sizing: border-box;
+    line-height: 2;
+}
+
+
+
+.table-header {
+    padding: 20rpx;
+    font-weight: 800;           /* 字体加重 */
+    background-color: #283661;   /* 背景色 */
+    color: #fcf0f4;
+}
+
+.cell-name {
+    padding: 10rpx;
+    /*background-color:#edf3e9;   !* 背景色 *!*/
+    font-size: 26rpx;
+    text-align: center;
+    border-bottom:unset;
+    justify-content:center;     /* 主轴居中 */
+    align-items: center;
+}
+
+.row-name {
+    border-bottom:unset;
+    padding: 10rpx;
+    font-size: 26rpx;
+}

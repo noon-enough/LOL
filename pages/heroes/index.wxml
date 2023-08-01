@@ -1,0 +1,54 @@
+<l-tab-bar
+        bg-color="#101c42"
+        text-color="#8a8a8a"
+        text-selected-color="#d7a75f"
+        list="{{list}}"
+/>
+<view class="container">
+    <view class="component-switch-filter">
+        <view class="{{selectPos === 'all' ? 'active': ''}}" data-type="all" data-action="position"
+              bind:tap="onSelect">全部位置</view>
+        <view wx:for="{{positions}}"
+              wx:for-item="position"
+              wx:key="i"
+              data-action="position"
+              bind:tap="onSelect"
+              data-type="{{position.type}}"
+              class="{{selectPos ===  position.type ? 'active': ''}}">{{position.name}}</view>
+    </view>
+    <view class="component-switch-filter" style="margin-top: unset;">
+        <view class="{{selectJob ===  'all' ? 'active': ''}}" data-type="all" data-action="job"
+              bind:tap="onSelect">全部定位</view>
+        <view wx:for="{{jobs}}"
+              wx:for-item="job"
+              wx:key="i"
+              data-action="job"
+              bind:tap="onSelect"
+              data-type="{{job.type}}"
+              class="{{selectJob ===  job.type ? 'active': ''}}">{{job.name}}</view>
+    </view>
+    <view class="champion-list" style="margin-bottom: 180rpx;">
+        <block wx:for="{{heroes}}"
+               wx:for-item="hero"
+               wx:for-index="i"
+               wx:key="id">
+            <view class="champion-item-big"
+                  bind:tap="detail"
+                  data-hero-id="{{hero.heroId}}">
+                <view class="champion-item-pic" style="background-image: url('{{hero.skin_base}}');">
+<!--                    <view class="blur-img" style="background-image: url('{{hero.skin_base}}');"></view>-->
+                    <view class="update-info">
+                        <view class="status plus">
+                            增强
+                        </view>
+                    </view>
+                </view>
+                <view class="champion-item-info">
+                    <view class="name">
+                        {{hero.name}} {{hero.title}}
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
