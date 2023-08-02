@@ -20,7 +20,7 @@
 .champion-detail-info .detail-info-1 {
     position: relative;
     width: 100%;
-    padding-bottom: 30rpx;
+    padding-bottom: 10rpx;
 }
 
 .champion-detail-info .detail-info-1 .champion-big-pic {
@@ -224,7 +224,7 @@
 .champion-detail-info .detail-info-1 .champion-rank-data .champion-data {
     margin: 0 0 20rpx;
     padding: 0 0 20rpx;
-    border-bottom: 1px solid #192446;
+    border-bottom: 1px solid #041c28;
 }
 
 .champion-detail-info .detail-info-1 .champion-rank-data .champion-data, .champion-detail-info .detail-info-1 .champion-rank-data .champion-data .data-item {
@@ -235,7 +235,7 @@
     vertical-align: middle;
     width: 15%;
     margin-right: 4%;
-    border-right: 1px solid #192446;
+    border-right: 1px solid #041c28;
     box-sizing: border-box;
 }
 
@@ -273,13 +273,12 @@
 
 .champion-detail-info>view {
     box-sizing: border-box;
-    background: #0b1536;
+    background: #041c28;
 }
 
 .champion-detail-info>view:first-child {
     margin-left: 0;
 }
-
 
 .component-switch-filter, .component-switch-filter2 {
     display: flex;
@@ -289,4 +288,369 @@
     margin-top: 20rpx;
     margin-bottom: 20rpx;
     justify-content: center;
+}
+
+.overview {
+    position: relative;
+}
+
+.rune-recommend {
+    background-color: #161a20;
+    padding: 30rpx 30rpx 30rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+}
+
+.rune-recommend .title {
+    font-size: 26rpx;
+    color: #fff5e0;
+    line-height: 1;
+    border-bottom: 2rpx solid #212529;
+    padding-bottom: 20rpx;
+}
+
+.rune-item {
+    width: 100%;
+    background-color: #161a20;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 30rpx 0 50rpx 0;
+    height: 100rpx;
+    justify-items: center;
+    align-content: center;
+    align-items: baseline;
+}
+
+.rune-item .rune-primary-wrap {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: middle;
+    width: 25%;
+    position: relative;
+}
+
+.rune-item .rune-primary-wrap:before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #252c35;
+    top: 50%;
+    left: 0;
+}
+
+.rune-item .rune-wrap2 {
+    width: 14%;
+}
+
+.rune-recommend .rune-item .rune-primary-wrap {
+    width: 60%;
+}
+
+.rune-recommend .rune-item .rune-wrap2 {
+    width: 30%;
+}
+
+
+.rune-item .win-chance {
+    color: #9c8250;
+}
+
+.rune-item .rune-primary-wrap .rune-primary {
+    position: relative;
+}
+
+.rune-item .rune-primary-wrap .rune-primary .rune-box {
+    width: 50rpx;
+    height: 50rpx;
+    border: 2rpx solid #a18b6b;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+    background-color: #161a20;
+}
+
+.rune-item .rune-primary-wrap .rune-primary .rune-box {
+    border: 2rpx solid #de6c6c;
+}
+
+.rune-item .rune-primary-wrap .main .rune-box {
+    width: 60rpx;
+    height: 60rpx;
+    border-width: 2rpx;
+}
+
+
+.rune-item .rune-primary-wrap .rune-primary .rune-box {
+    border: 2rpx solid #de6c6c
+}
+
+.rune-item .rune-primary-wrap .rune-primary .tone1 {
+    border: 2rpx solid #a18b6b
+}
+
+.rune-item .rune-primary-wrap .rune-primary .tone2 {
+    border: 2rpx solid #d44242
+}
+
+.rune-item .rune-primary-wrap .rune-primary .tone3 {
+    border: 2rpx solid #9faafc
+}
+
+.rune-item .rune-primary-wrap .rune-primary .tone4 {
+    border: 2rpx solid #a1d586
+}
+
+.rune-item .rune-primary-wrap .rune-primary .tone5 {
+    border: 2rpx solid #49aab9
+}
+
+
+.rune-item .rune-primary-wrap .rune-primary .rune-box .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%,0);
+}
+
+.rune-item .rune-primary-wrap .main .p {
+    top: 120%;
+}
+
+.rune-item .rune-primary-wrap .rune-primary .p {
+    display: none;
+    position: absolute;
+    width: 20rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #5e625a;
+    line-height: 1.2;
+    top: calc(120% + .07rem);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rune-item .rune-wrap2 .rune-primary .tone5 {
+    border: 2rpx solid #49aab9;
+}
+
+.rune-recommend .rate {
+    color: #1dbaa9;
+    font-family: dinot-bold;
+    text-align: center;
+    display: inline-flex;
+    margin-top: 10rpx;
+}
+
+.rune-recommend .rate view {
+    margin-right: 10rpx;
+}
+
+.rune-recommend .rate .span {
+    font-size: 30rpx;
+    font-weight: bolder;
+}
+
+.rune-recommend .rate .onstage-chance.p,
+.rune-recommend .rate .win-chance.p {
+    font-size: 28rpx;
+    text-align: center;
+    color: #5e625a;
+}
+
+.rune-recommend .rate .win-chance.span {
+    color: #9c8250;
+    font-size: 30rpx;
+    font-weight: bolder;
+}
+
+.equipment-recommend {
+    display: flex;
+    font-size: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.box-equipment {
+    width: 100%;
+    padding: 20rpx;
+    box-sizing: border-box;
+    background-color: #161a20;
+    line-height: 1;
+    margin-bottom: 20rxp;
+}
+
+.equipment-recommend .box-equipment {
+}
+
+.box-equipment .head {
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #212529;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.box-equipment .rec-text {
+    width: 70%;
+    color: #fff5e0;
+    font-size: 28rpx;
+    text-align: left;
+}
+
+.box-equipment .onstage-text {
+    width: 15%;
+    color: #5e625a;
+    font-size: 24rpx;
+    text-align: center;
+}
+
+.box-equipment .win-text {
+    width: 15%;
+    color: #5e625a;
+    font-size: 24rpx;
+    text-align: center;
+}
+
+.box-equipment .list {
+    margin-top: 20rpx;
+}
+
+.box-equipment .list .list-item {
+    font-size: 0;
+    margin-bottom: 10rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.box-equipment .list .list-item .equipment-box {
+    width: 70%;
+    font-size: 0;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.box-equipment .list .list-item .equipment-box .equipment {
+    display: inline-block;
+    margin-right: 20rpx;
+    width: 70rpx;
+    height: 70rpx;
+    border: 2rpx solid #313537;
+    overflow: hidden;
+    margin-bottom: 10rpx;
+}
+
+.box-equipment .list .list-item .equipment-box .equipment .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.box-equipment .list .list-item .onstage-text {
+    text-align: center;
+    font-family: dinot-bold;
+    width: 15%;
+    color: #1dbaa9;
+    font-size: 26rpx;
+    line-height: 1;
+}
+
+.box-equipment .list .list-item .win-text {
+    text-align: center;
+    font-family: dinot-bold;
+    width: 15%;
+    font-size: 26rpx;
+    line-height: 1;
+    color: #9c8250;
+}
+
+.spells-list {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 0;
+    text-align: left;
+    margin-left: 20rpx!important;
+    margin-top: 20rpx;
+}
+
+.spells-list .spells {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    margin-left: 20rpx;
+    width: 100rpx;
+    height: 100rpx;
+    box-sizing: border-box;
+}
+
+.spells-list .spells .img {
+    width: 100%;
+    height: 100%;
+}
+
+.spells-list .spells-content {
+    margin-top: 10rpx;
+    color: #fff5e0;
+}
+
+.spells-list .spells-content .arrow {
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 20rpx;
+    position: relative;
+}
+
+.spells-list .spells-content .arrow.P {
+    left: 20rpx;
+}
+
+.spells-list .spells-content .arrow.Q {
+    left: 140rpx;
+}
+
+.spells-list .spells-content .arrow.W {
+    left: 260rpx;
+}
+
+.spells-list .spells-content .arrow.E {
+    left: 380rpx;
+}
+
+.spells-list .spells-content .arrow.R {
+    left: 500rpx;
+}
+
+.spells-list .spells-content .arrow .img {
+    width: 100%;
+    height: 100%;
+}
+
+.spells-list .spells-content .name {
+    font-size: 32rpx;
+    color:  #fff5e0;
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+    display: inline-flex;
+}
+
+.spells-list .spells-content .description {
+    font-size: 30rpx;
+    color:  #fff5e0;
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+    line-height: 1.5;
 }

@@ -13,7 +13,7 @@ export default [
     },
     {
         pagePath:"/pages/arena/index",
-        text:"斗罗大陆",
+        text:"斗魂竞技",
         iconPath:"/assets/tabbar/arena.png",
         selectedIconPath:"/assets/tabbar/arena-selected.png"
     },

@@ -1,5 +1,5 @@
 <l-tab-bar
-        bg-color="#101c42"
+        bg-color="#041c28"
         text-color="#8a8a8a"
         text-selected-color="#d7a75f"
         list="{{list}}"
@@ -37,11 +37,11 @@
                   data-hero-id="{{hero.heroId}}">
                 <view class="champion-item-pic" style="background-image: url('{{hero.skin_base}}');">
 <!--                    <view class="blur-img" style="background-image: url('{{hero.skin_base}}');"></view>-->
-                    <view class="update-info">
-                        <view class="status plus">
-                            增强
-                        </view>
-                    </view>
+<!--                    <view class="update-info">-->
+<!--                        <view class="status plus">-->
+<!--                            增强-->
+<!--                        </view>-->
+<!--                    </view>-->
                 </view>
                 <view class="champion-item-info">
                     <view class="name">

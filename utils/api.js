@@ -24,4 +24,15 @@ function getFight(job = "all") {
     return get(`/lol/fight?job=${job}`)
 }
 
-module.exports = {getRanking, getHero, getHeroDetail, getFight}
+function getArena(job = "all") {
+    return get(`/lol/arena?job=${job}`)
+}
+
+function getHeroSkill(id = 0) {
+    return get(`/lol/champions/${id}/skill`)
+}
+
+function getEquipment(map = 0, classify = "all") {
+    return get(`/lol/equipment?map=${map}&class=${classify}`)
+}
+module.exports = {getRanking, getHero, getHeroDetail, getFight, getArena, getEquipment, getHeroSkill}

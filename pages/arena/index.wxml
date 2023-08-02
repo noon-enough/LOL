@@ -1,0 +1,36 @@
+<l-tab-bar
+        bg-color="#041c28"
+        text-color="#8a8a8a"
+        text-selected-color="#d7a75f"
+        list="{{list}}"
+/>
+<view class="component-switch-filter">
+    <view class="{{curJob ===  'all' ? 'active': ''}}" data-type="all"
+          bind:tap="onSelect">全部定位</view>
+    <view wx:for="{{jobs}}"
+          wx:for-item="job"
+          wx:key="i"
+          bind:tap="onSelect"
+          data-type="{{job.type}}"
+          class="{{curJob ===  job.type ? 'active': ''}}">{{job.name}}</view>
+</view>
+<t-pull-down-refresh
+        value="{{isRefresh}}"
+        loadingProps="{{loadingProps}}"
+        loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
+        bind:refresh="onPullDownRefresh"
+        bind:scroll="onScroll"
+        using-custom-navbar="{{true}}"
+>
+    <view class="container" style="margin-bottom: 200rpx;">
+        <table-arena
+                headers="{{tableHeader}}"
+                data="{{ arena }}"
+                stripe="{{ stripe }}"
+                border="{{ border }}"
+                cell-class-name="cell-name"
+                row-class-name="row-name"
+                header-row-class-name="table-header"
+        />
+    </view>
+</t-pull-down-refresh>

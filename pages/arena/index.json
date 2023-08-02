@@ -1,4 +1,6 @@
 {
+  "navigationBarTitleText": "斗魂竞技场数据排行",
   "usingComponents": {
+    "table-arena": "/components/table-arena/index"
   }
 }

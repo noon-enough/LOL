@@ -54,8 +54,16 @@
                 <view class="champion-rank-data" wx:if="{{info.record_data}}">
                     <view class="champion-data">
                         <view class="data-item">
-                            <view class="data-num strength">
-                                {{info.rankData.strength}}
+                            <view class="data-num strength" style="text-align: right;">
+                                <block wx:if="{{info.difficultyL === 1}}">
+                                    易
+                                </block>
+                                <block wx:if="{{info.difficultyL === 2}}">
+                                    中
+                                </block>
+                                <block wx:if="{{info.difficultyL === 3}}">
+                                    难
+                                </block>
                             </view>
                             <view class="data-txt">上手难度</view>
                         </view>
@@ -69,7 +77,7 @@
                             <view class="data-num">
                                 {{info.record_data.banrate}}%
                             </view>
-                            <view class="data-txt">Ban率</view>
+                            <view class="data-txt">禁用率</view>
                         </view>
                         <view class="data-item">
                             <view class="data-num">
@@ -86,9 +94,254 @@
                     </view>
                 </view>
             </view>
-        </view>
-        <view class="champion-detail-info">
-
+            <view class="overview" style="top: -90rpx;">
+                <l-tabs hasLine="{{false}}"
+                        active-color="#b59758"
+                        inactive-color="#959db9"
+                        bind:linchange="onTabTabBar"
+                        active-key="{{activeKey}}"
+                        l-inactive-class="tab-inactive-item"
+                        l-active-class="tab-active-item">
+                    <l-tabpanel tab="总览" key="overview" slot="overview">
+                        <view class="tab-content">
+                            <view class="rune-recommend">
+                                <view class="title">符文推荐</view>
+                                <view class="rate">
+                                    <view class="onstage-chance p">登场率</view>
+                                    <view class="span">111%</view>
+                                    <view class="win-chance p">胜率</view>
+                                    <view class="win-chance span">111%</view>
+                                </view>
+                                <view class="rune-item">
+                                    <view class="rune-primary-wrap">
+                                        <view class="rune-primary main">
+                                            <view class="rune-box tone1">
+                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/zz.png" class="img"></image>
+                                            </view>
+                                            <view class="p">精密</view>
+                                        </view>
+                                        <view class="rune-primary main">
+                                            <view class="rune-box tone1">
+                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/DarkHarvest.png" class="img"></image>
+                                            </view>
+                                            <view class="p">黑暗收割</view>
+                                        </view>
+                                        <view class="rune-primary">
+                                            <view class="rune-box tone1">
+                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/SuddenImpact.png" class="img"></image>
+                                            </view>
+                                            <view class="p">猛然冲击</view>
+                                        </view>
+                                        <view class="rune-primary">
+                                            <view class="rune-box tone1">
+                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/EyeballCollection.png" class="img"></image>
+                                            </view>
+                                            <view class="p">眼球收集器</view>
+                                        </view>
+                                        <view class="rune-primary">
+                                            <view class="rune-box tone1">
+                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/TreasureHunter.png" class="img"></image>
+                                            </view>
+                                            <view class="p">寻宝猎人</view>
+                                        </view>
+                                    </view>
+                                    <view class="rune-primary-wrap rune-wrap2">
+                                        <view class="rune-primary">
+                                            <view class="rune-box tone5">
+                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/qd.png" class="img"></image>
+                                            </view>
+                                            <view class="p">启迪</view>
+                                        </view>
+                                        <view class="rune-primary">
+                                            <view class="rune-box tone5">
+                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/MagicalFootwear.png" class="img"></image>
+                                            </view>
+                                            <view class="p">神奇之鞋</view>
+                                        </view>
+                                        <view class="rune-primary">
+                                            <view class="rune-box tone5">
+                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/FuturesMarket.png" class="img"></image>
+                                            </view>
+                                            <view class="p">未来市场</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="equipment-recommend">
+                                <view class="equipment-cont box-equipment">
+                                    <view class="head">
+                                        <view class="rec-text">出门装推荐</view>
+                                        <view class="onstage-text">登场率</view>
+                                        <view class="win-text">胜率</view>
+                                    </view>
+                                    <view class="list">
+                                        <view class="list-item">
+                                            <view class="equipment-box">
+                                                <view class="equipment">
+                                                    <image src="https://game.gtimg.cn/images/lol/act/img/item/1102.png"
+                                                           class="img"
+                                                    />
+                                                </view>
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/2003.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                            </view>
+                                            <view class="onstage-text">52.19%</view>
+                                            <view class="win-text">53.65%</view>
+                                        </view>
+                                        <view class="list-item">
+                                            <view class="equipment-box">
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/1101.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/2003.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                            </view>
+                                            <view class="onstage-text">22.82%</view>
+                                            <view class="win-text">52.83%</view>
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class="equipment-cont box-equipment">
+                                    <view class="head">
+                                        <view class="rec-text">神话装推荐</view>
+                                        <view class="onstage-text">登场率</view>
+                                        <view class="win-text">胜率</view>
+                                    </view>
+                                    <view class="list">
+                                        <view class="list-item">
+                                            <view class="equipment-box">
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6691.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6676.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/3814.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                            </view>
+                                            <view class="onstage-text">9.64%</view>
+                                            <view class="win-text">61.68%</view>
+                                        </view>
+                                        <view class="list-item">
+                                            <view class="equipment-box">
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6691.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6676.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6694.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                            </view>
+                                            <view class="onstage-text">7.97%</view>
+                                            <view class="win-text">62.08%</view>
+                                        </view>
+                                        <view class="list-item">
+                                            <view class="equipment-box">
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6691.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6676.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                                <view class="equipment">
+                                                    <image
+                                                            src="https://game.gtimg.cn/images/lol/act/img/item/3004.png"
+                                                            class="img"
+                                                    />
+                                                </view>
+                                            </view>
+                                            <view class="onstage-text">5.19%</view>
+                                            <view class="win-text">60.87%</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </l-tabpanel>
+                    <l-tabpanel tab="技能数值" key="skill" slot="skill">
+                        <view class="tab-content">
+                            <view class="">
+                                <view class="spells-list">
+                                    <view class="spells" wx:for="{{defaultSkill}}"
+                                          wx:key="i"
+                                          wx:for-index="index"
+                                          wx:for-item="dk"
+                                          bind:tap="onChangeSkill"
+                                          data-key="{{dk}}">
+                                        <image src="{{skill[dk].abilityIconPath}}" class="img"/>
+                                    </view>
+                                    <view class="spells-content">
+                                        <view class="arrow {{selectKey}}">
+                                            <image src="/assets/icon/down-one.svg" class="img"></image>
+                                        </view>
+                                        <view class="name">
+                                            <view class="spell-name">
+                                                {{skill[selectKey].name}}：
+                                            </view>
+                                            <view class="spell-info">
+                                                {{selectKey === "P" ? '被动技能': selectKey + '技能'}}
+                                            </view>
+                                        </view>
+                                        <view class="description">
+                                            {{skill[selectKey].description}}
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </l-tabpanel>
+                    <l-tabpanel tab="英雄克制" key="1v1" slot="1v1">
+                        <view class="tab-content">
+                        </view>
+                    </l-tabpanel>
+                    <l-tabpanel tab="符文推荐" key="rune" slot="rune">
+                        <view class="tab-content">
+                        </view>
+                    </l-tabpanel>
+                    <l-tabpanel tab="装备推荐" key="equipment" slot="equipment">
+                        <view class="tab-content">
+                        </view>
+                    </l-tabpanel>
+                </l-tabs>
+            </view>
         </view>
     </view>
 </capsule-bar>

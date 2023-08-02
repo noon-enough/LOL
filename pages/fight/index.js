@@ -22,12 +22,12 @@ Page({
             },
             {
                 prop: 'hero',
-                width: 348,
+                width: 280,
                 label: '英雄',
             },
             {
                 prop: 'win',
-                width: 100,
+                width: 80,
                 label: '胜率',
                 color: '#fcf0f4'
             },
@@ -38,8 +38,14 @@ Page({
                 color: '#fcf0f4'
             },
             {
-                prop: 'more',
+                prop: 'level',
                 width: 100,
+                label: '梯队',
+                color: '#fcf0f4'
+            },
+            {
+                prop: 'more',
+                width: 80,
                 label: '...',
                 color: '#fcf0f4'
             },
@@ -69,11 +75,24 @@ Page({
                 return
             }
 
-            data = data.map((item) => {
+            data = data.map((item, idx) => {
                 item.win = (item.win * 100).toFixed(1) + "%"
                 item.show = (item.show * 100).toFixed(1) + "%"
                 item.orderAbs = Math.abs(item.order)
                 item.hero.roles = getJobs(item.hero.roles)
+
+                item.grade_t = 4;
+                if(idx <= data.length * 0.04){
+                    item.grade_t = 0;
+                }else if(idx <= data.length * 0.15){
+                    item.grade_t = 1;
+                }else if(idx <= data.length * 0.3){
+                    item.grade_t = 2;
+                }else if(idx <= data.length * 0.4){
+                    item.grade_t = 3;
+                }else{
+                    item.grade_t = 4;
+                }
                 return item
             })
             that.setData({

@@ -1,0 +1,55 @@
+<l-tab-bar
+        bg-color="#041c28"
+        text-color="#8a8a8a"
+        text-selected-color="#d7a75f"
+        list="{{list}}"
+/>
+<view class="component-switch-filter">
+    <view wx:for="{{models}}"
+          wx:for-item="model"
+          wx:key="i"
+          wx:for-index="index"
+          bind:tap="onSelect"
+          data-action="model"
+          data-type="{{index}}"
+          class="{{selectModel === index ? 'active': ''}}">{{model}}</view>
+</view>
+
+<view class="component-switch-filter">
+    <view class="{{selectClassify ===  'all' ? 'active': ''}}"
+          data-type="all"
+          data-action="classify"
+          bind:tap="onSelect">全部</view>
+    <view wx:for="{{classify}}"
+          wx:for-item="cl"
+          wx:key="i"
+          wx:for-index="index"
+          bind:tap="onSelect"
+          data-action="classify"
+          data-type="{{cl.type}}"
+          class="{{selectClassify ===  cl.type ? 'active': ''}}">{{cl.name}}</view>
+</view>
+<t-pull-down-refresh
+        value="{{isRefresh}}"
+        loadingProps="{{loadingProps}}"
+        loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
+        bind:refresh="onPullDownRefresh"
+        bind:scroll="onScroll"
+        using-custom-navbar="{{true}}"
+>
+    <view class="equipment-list" wx:if="{{data.length}}">
+        <view class="list-item" wx:for="{{data}}" wx:for-index="index" wx:for-item="item" wx:key="i">
+            <view class="equipment-item">
+                <view class="prop-box">
+                    <image src="{{item.iconPath}}" class="img"></image>
+                </view>
+                <view class="prop-name">
+                    {{item.name}}
+                </view>
+                <view class="price">
+                    <view class="span">{{item.price}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</t-pull-down-refresh>

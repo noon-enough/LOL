@@ -22,5 +22,6 @@ const LOL_CONFIG = {
         {type:'legend',name:'传说'},
         {type:'myth',name:'神话'}
     ],
+    mode_list: ['召唤师峡谷', '斗魂竞技场'],
 }
 module.exports = {API_DOMAIN, LOL_CONFIG}

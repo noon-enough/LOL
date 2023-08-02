@@ -1,4 +1,4 @@
-import {getHeroDetail} from "../../utils/api";
+import {getHeroDetail, getHeroSkill} from "../../utils/api";
 import {getNameByType, getPositions, historyBack, showToast} from "../../utils/util";
 import {LOL_CONFIG} from "../../utils/config";
 
@@ -9,6 +9,10 @@ Page({
         id: 0,
         info: {},
         currLane: "mid",
+        activeKey: 'overview',
+        skill: [],
+        defaultSkill: ["P", "Q", "W", "E", "R"],
+        selectKey: "P",
     },
     onLoad: function (options) {
         let that = this,
@@ -23,6 +27,26 @@ Page({
 
         wx.showLoading()
         that.getHeroDetail()
+        that.getHeroSkill()
+    },
+    getHeroSkill() {
+        let that = this,
+            id = that.data.id
+
+        getHeroSkill(id).then(res => {
+            console.log('getHeroSkill', res)
+            let code = res.code ?? 200,
+                data = res.data ?? [],
+                message =  res.message ?? "非法操作"
+            if (code !== 200) {
+                showToast(message, {icon: "error"})
+                return
+            }
+
+            that.setData({
+                skill: data,
+            })
+        })
     },
     getHeroDetail() {
         let that = this,
@@ -52,6 +76,7 @@ Page({
                     "name": d,
                 }
             })
+            data.difficultyL = parseInt(data.difficultyL)
             that.setData({
                 info: data,
                 currLane: currLane,
@@ -69,5 +94,13 @@ Page({
         that.setData({
             currLane: type,
         })
-    }
+    },
+    onChangeSkill(e) {
+        let that = this,
+            type = e.currentTarget.dataset.key ?? 'P'
+
+        that.setData({
+            selectKey: type,
+        })
+    },
 });

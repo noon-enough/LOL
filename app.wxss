@@ -1,9 +1,11 @@
 page {
-    background: #101c42;
+    /*background: #101c42;*/
+    background: #041c28;
 }
 
 .container {
-    background: #0b1536;
+    /*background: #0b1536;*/
+    background: #041c28;
     width: 100%;
     overflow-y:scroll;
     color: #fcf0f4;
@@ -42,12 +44,10 @@ page {
     line-height: 2;
 }
 
-
-
 .table-header {
     padding: 20rpx;
     font-weight: 800;           /* 字体加重 */
-    background-color: #283661;   /* 背景色 */
+    background-color: #202831;   /* 背景色 */
     color: #fcf0f4;
 }
 
@@ -65,4 +65,31 @@ page {
     border-bottom:unset;
     padding: 10rpx;
     font-size: 26rpx;
+}
+
+
+.tab-active-item {
+    color: #b59758;
+    border: 1px solid #b59758;
+    z-index: 2;
+    font-weight: 700;
+    font-size: 24rpx;
+    background: #041c28;
+}
+
+.tab-inactive-item {
+    text-align: center;
+    font-size: 24rpx;
+    background: #041c28;
+    color: #959db9;
+}
+
+.symbol  {
+    display: inline-block;
+    vertical-align: middle;
+    color: #6e4a00;
+    font-size: 30rpx;
+    margin: 0 30rpx;
+    font-weight: 700;
+    flex-grow: 1;
 }
