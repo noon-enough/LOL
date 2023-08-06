@@ -9,7 +9,7 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#041c28",
+    "navigationBarBackgroundColor": "#191e25",
     "navigationBarTitleText": "英雄联盟开黑助手",
     "navigationBarTextStyle": "white"
   },
@@ -20,7 +20,11 @@
     "t-image": "/miniprogram_npm/tdesign-miniprogram/image/image",
     "t-pull-down-refresh": "/miniprogram_npm/tdesign-miniprogram/pull-down-refresh/pull-down-refresh",
     "l-tabs": "/miniprogram_npm/lin-ui/tabs/index",
-    "l-tabpanel": "/miniprogram_npm/lin-ui/tabpanel/index"
+    "l-tabpanel": "/miniprogram_npm/lin-ui/tabpanel/index",
+    "l-mask": "/miniprogram_npm/lin-ui/mask/index",
+    "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
+
+    "lol-dialog": "/components/dialog/index"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",

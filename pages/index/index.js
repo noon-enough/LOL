@@ -15,6 +15,7 @@ Page({
         lane: "mid",
         list: app.globalData.tabbar,
         ranking: [],
+        backupData: [],
         tableHeader: [
             {
                 prop: 'ranking',
@@ -84,6 +85,7 @@ Page({
             })
             that.setData({
                 ranking: data,
+                backupData: data,
                 isRefresh: false,
             })
         })
@@ -108,4 +110,52 @@ Page({
 
         that.getRanking()
     },
+    onShareAppMessage(options) {
+        let that = this
+        return {
+            title: `英雄联盟LOL开黑上分助手，国服玩家都在用的上分小程序`,
+            path: `/pages/index/index`,
+        }
+    },
+    searchConfirm(e) {
+        let q = e.detail.value ?? ""
+        if (q === "") {
+            return
+        }
+        this.searchBackupData(q)
+    },
+    searchClear(e) {
+        let that = this
+        that.setData({
+            ranking: that.data.backupData,
+        })
+    },
+    searchChange(e){
+        let q = e.detail.value ?? "",
+            that = this
+        q = q.trim()
+        if (q === "") {
+            that.setData({
+                ranking: that.data.backupData
+            })
+            return
+        }
+        that.searchBackupData(q)
+    },
+    searchBackupData(q = "") {
+        let that = this,
+            data = []
+        that.data.backupData.forEach((item) => {
+            if (item.hero.name.search(q) !== -1 ||
+                item.hero.nickname.search(q) !== -1 ||
+                item.hero.title.search(q) !== -1 ||
+                item.hero.alias.search(q) !== -1
+            ) {
+                data.push(item)
+            }
+        })
+        that.setData({
+            ranking: data,
+        })
+    }
 });

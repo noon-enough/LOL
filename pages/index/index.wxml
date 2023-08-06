@@ -1,17 +1,9 @@
 <l-tab-bar
-        bg-color="#041c28"
+        bg-color="#191e25"
         text-color="#8a8a8a"
         text-selected-color="#d7a75f"
         list="{{list}}"
 />
-<view class="component-switch-filter">
-    <view wx:for="{{positions}}"
-          wx:for-item="position"
-          wx:key="i"
-          bind:tap="onSelect"
-          data-type="{{position.type}}"
-          class="{{lane ===  position.type ? 'active': ''}}">{{position.name}}</view>
-</view>
 <t-pull-down-refresh
         value="{{isRefresh}}"
         loadingProps="{{loadingProps}}"
@@ -20,6 +12,22 @@
         bind:scroll="onScroll"
         using-custom-navbar="{{true}}"
 >
+    <view class="component-switch-filter">
+        <view wx:for="{{positions}}"
+              wx:for-item="position"
+              wx:key="i"
+              bind:tap="onSelect"
+              data-type="{{position.type}}"
+              class="{{lane ===  position.type ? 'active': ''}}">{{position.name}}</view>
+    </view>
+    <view class="search">
+        <l-search-bar placeholder="搜索"
+                      bind:linconfirm="searchConfirm"
+                      bind:linclear="searchClear"
+                      bind:linchange="searchChange"
+                      bg-color="#313537"
+                      show-cancel="{{false}}"/>
+    </view>
     <view class="container" style="margin-bottom: 200rpx;">
         <table
                 headers="{{tableHeader}}"

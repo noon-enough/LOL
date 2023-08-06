@@ -1,6 +1,10 @@
 {
+  "enablePullDownRefresh": true,
   "navigationStyle": "custom",
   "navigationBarTitleText": "",
   "usingComponents": {
+    "t-stepper": "/miniprogram_npm/tdesign-miniprogram/stepper/stepper",
+    "t-row": "/miniprogram_npm/tdesign-miniprogram/row/row",
+    "t-col": "/miniprogram_npm/tdesign-miniprogram/col/col"
   }
 }

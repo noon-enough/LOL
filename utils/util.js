@@ -83,9 +83,14 @@ function getNameByType(configArray, type) {
     return item ? item.name : null;
 }
 
+function getIconByType(type) {
+    const item = LOL_CONFIG.hero_pos.find((item) => item.type === type);
+    return item ? item.icon : null;
+}
+
 /**
  *
  * @type {{goto: goto, heroDetail: heroDetail, getSessionName: (function(string=): string), showToast: showToast, getSession: (function(*): string), gotoFeedback: gotoFeedback, getSessionFromStorage: (function(): *), lineupDetail: lineupDetail}}
  */
 module.exports = {historyBack, goto, heroDetail, gotoFeedback,
-    showToast, getPositions, getNameByType, getJobs}
+    showToast, getPositions, getNameByType, getJobs, getIconByType}

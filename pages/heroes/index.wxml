@@ -1,10 +1,17 @@
 <l-tab-bar
-        bg-color="#041c28"
+        bg-color="#191e25"
         text-color="#8a8a8a"
         text-selected-color="#d7a75f"
         list="{{list}}"
 />
-<view class="container">
+<t-pull-down-refresh
+        value="{{isRefresh}}"
+        loadingProps="{{loadingProps}}"
+        loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
+        bind:refresh="onPullDownRefresh"
+        bind:scroll="onScroll"
+        using-custom-navbar="{{true}}"
+>
     <view class="component-switch-filter">
         <view class="{{selectPos === 'all' ? 'active': ''}}" data-type="all" data-action="position"
               bind:tap="onSelect">全部位置</view>
@@ -27,28 +34,37 @@
               data-type="{{job.type}}"
               class="{{selectJob ===  job.type ? 'active': ''}}">{{job.name}}</view>
     </view>
-    <view class="champion-list" style="margin-bottom: 180rpx;">
-        <block wx:for="{{heroes}}"
-               wx:for-item="hero"
-               wx:for-index="i"
-               wx:key="id">
-            <view class="champion-item-big"
-                  bind:tap="detail"
-                  data-hero-id="{{hero.heroId}}">
-                <view class="champion-item-pic" style="background-image: url('{{hero.skin_base}}');">
-<!--                    <view class="blur-img" style="background-image: url('{{hero.skin_base}}');"></view>-->
-<!--                    <view class="update-info">-->
-<!--                        <view class="status plus">-->
-<!--                            增强-->
-<!--                        </view>-->
-<!--                    </view>-->
-                </view>
-                <view class="champion-item-info">
-                    <view class="name">
-                        {{hero.name}} {{hero.title}}
+    <view class="search">
+        <l-search-bar placeholder="搜索"
+                      bind:linconfirm="searchConfirm"
+                      bind:linclear="searchClear"
+                      bind:linchange="searchChange"
+                      bg-color="#313537"
+                      show-cancel="{{false}}"/>
+    </view>
+    <view class="container">
+        <view class="champion-list" style="margin-bottom: 180rpx;">
+            <block wx:for="{{heroes}}"
+                   wx:for-item="hero"
+                   wx:for-index="i"
+                   wx:key="id">
+                <view class="champion-item-big"
+                      bind:tap="detail"
+                      data-hero-id="{{hero.heroId}}">
+                    <view class="champion-item-pic" style="background-image: url('{{hero.skin_base}}');">
+                        <view class="hero-position" wx:if="{{hero.positions.length}}">
+                            <view class="span" wx:for="{{hero.positions}}" wx:for-item="p" wx:for-index="idx" wx:key="pp">
+                                <view class="{{p.icon}}"></view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="champion-item-info">
+                        <view class="name">
+                            {{hero.name}} {{hero.title}}
+                        </view>
                     </view>
                 </view>
-            </view>
-        </block>
+            </block>
+        </view>
     </view>
-</view>
+</t-pull-down-refresh>

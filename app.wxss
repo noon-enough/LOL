@@ -1,11 +1,11 @@
 page {
     /*background: #101c42;*/
-    background: #041c28;
+    background: #191e25;
 }
 
 .container {
     /*background: #0b1536;*/
-    background: #041c28;
+    background: #191e25;
     width: 100%;
     overflow-y:scroll;
     color: #fcf0f4;
@@ -74,13 +74,13 @@ page {
     z-index: 2;
     font-weight: 700;
     font-size: 24rpx;
-    background: #041c28;
+    background: #191e25;
 }
 
 .tab-inactive-item {
     text-align: center;
     font-size: 24rpx;
-    background: #041c28;
+    background: #191e25;
     color: #959db9;
 }
 
@@ -93,3 +93,58 @@ page {
     font-weight: 700;
     flex-grow: 1;
 }
+
+.icon-arrow-down,
+.icon-gold,
+.icon-pos-bot,
+.icon-pos-jungle,
+.icon-pos-mid,
+.icon-pos-sup,
+.icon-pos-top,
+.icon-search,
+.spr_info_overview {
+    background-image: url(https://game.gtimg.cn/images/lol/lolstrategy/spr_info_overview.png?20221108);
+    background-size: 44px 38px;
+    /*background-size: 138rpx 118rpx;*/
+
+    background-repeat: no-repeat;
+}
+
+.icon-pos-bot {
+    background-position: 1px -14px;
+    width: 14px;
+    height: 16px;
+}
+
+.icon-pos-jungle {
+    background-position: -32px 1px;
+    width: 14px;
+    height: 16px;
+}
+
+.icon-pos-mid {
+    background-position: -16px -14px;
+    width: 14px;
+    height: 16px;
+}
+
+.icon-pos-sup {
+    background-position: 1px 1px;
+    width:  16px;
+    height: 16px;
+}
+
+.icon-pos-top {
+    background-position: -16px 1px;
+    width: 15px;
+    height: 16px;
+}
+
+
+.search {
+    margin-top: 0rpx;
+    margin-bottom: 10rpx;
+}
+
+@import "assets/css/dialog.wxss";
+

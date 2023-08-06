@@ -1,0 +1,64 @@
+<view class="tooltip-content">
+    <view class="equipment-flow" wx:if="{{type === 'summoners'}}">
+        <view class="title">
+            <view class="em">{{payload.name}}</view>
+        </view>
+        <view class="line"></view>
+        <view class="desc">
+            <text>{{payload.description}}</text>
+        </view>
+        <view class="line"></view>
+    </view>
+    <view class="equipment-flow" wx:if="{{type === 'rune'}}">
+        <view class="title">
+            <view class="em">{{payload.name}}</view>
+        </view>
+        <view class="line"></view>
+        <view class="desc">
+            <rich-text nodes="{{payload.longdesc}}"></rich-text>
+        </view>
+        <view class="line"></view>
+    </view>
+    <view class="equipment-flow" wx:if="{{type === 'equipment'}}">
+        <view class="title">
+            <view class="em">{{payload.name}}</view>
+            <view class="span">
+                售价或合成费用：
+                <view class="em price">{{payload.price}}</view>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="desc">
+            <text>{{payload.description}}</text>
+        </view>
+        <view class="line"></view>
+        <view class="synthesis-con" wx:if="{{payload.from_info.length}}">
+            <view class="floor1">
+                <view class="imgs botline">
+                    <image src="{{payload.iconPath}}" class="img"/>
+                </view>
+            </view>
+            <view class="floor2 compose{{payload.from_info.length}}">
+                <view class="hline"></view>
+                <view wx:for="{{payload.from_info}}"
+                      wx:for-index="idx"
+                      wx:for-item="from"
+                      wx:key="i"
+                      class="imgs topline {{from.from_info.length === 1 ? 'single' : ''}} {{from.from_info.length ? 'botline' : ''}}"
+                >
+                    <image src="{{from.iconPath}}" class="img"/>
+                    <view class="floor3" wx:if="{{from.from_info.length}}">
+                        <view class="hline" wx:if="{{from.from_info.length > 1}}"></view>
+                        <view class="imgs topline" wx:for="{{from.from_info}}"
+                              wx:key="equi"
+                              wx:for-item="equ"
+                              wx:for-index="equIdx"
+                        >
+                            <image class="img" src="{{equ.iconPath}}"/>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

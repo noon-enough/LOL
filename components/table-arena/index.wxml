@@ -52,7 +52,7 @@
                               bind:tap="detail"
                               data-hero-id="{{it.hero_id1}}"
                               shape="circle"
-                              size="60"
+                              size="80"
                               l-class="champion-pic"
                               src="{{it.hero1.avatar}}"/>
                       <view class="name">
@@ -67,7 +67,7 @@
                               bind:tap="detail"
                               data-hero-id="{{it.hero_id2}}"
                               shape="circle"
-                              size="60"
+                              size="80"
                               l-class="champion-pic"
                               src="{{it.hero2.avatar}}"/>
                       <view class="name">

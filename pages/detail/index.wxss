@@ -16,7 +16,6 @@
     flex-direction: column;
 }
 
-
 .champion-detail-info .detail-info-1 {
     position: relative;
     width: 100%;
@@ -190,8 +189,7 @@
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    margin-bottom: 20rpx;
-    margin-top: 20rpx;
+    margin-top: 40rpx;
 }
 
 .hero-details .rate .span {
@@ -199,20 +197,20 @@
 }
 .hero-details .rate .win-text {
     color: #887249;
-    font-family: dinot-bold;
+    font-family: dinot-bold, serif;
     font-size: 32rpx;
 }
 
 
 .hero-details .rate .ban-text {
     color: #f32643;
-    font-family: dinot-bold;
+    font-family: dinot-bold, serif;
     font-size: 32rpx;
 }
 
 .hero-details .rate .show-text {
     color: #1dbaa9;
-    font-family: dinot-bold;
+    font-family: dinot-bold, serif;
     font-size: 32rpx;
 }
 
@@ -224,10 +222,11 @@
 .champion-detail-info .detail-info-1 .champion-rank-data .champion-data {
     margin: 0 0 20rpx;
     padding: 0 0 20rpx;
-    border-bottom: 1px solid #041c28;
+    border-bottom: 1px solid #212529;
 }
 
-.champion-detail-info .detail-info-1 .champion-rank-data .champion-data, .champion-detail-info .detail-info-1 .champion-rank-data .champion-data .data-item {
+.champion-detail-info .detail-info-1 .champion-rank-data .champion-data,
+.champion-detail-info .detail-info-1 .champion-rank-data .champion-data .data-item {
 }
 
 .champion-detail-info .detail-info-1 .champion-rank-data .champion-data .data-item {
@@ -235,7 +234,7 @@
     vertical-align: middle;
     width: 15%;
     margin-right: 4%;
-    border-right: 1px solid #041c28;
+    border-right: 1px solid #212529;
     box-sizing: border-box;
 }
 
@@ -273,7 +272,7 @@
 
 .champion-detail-info>view {
     box-sizing: border-box;
-    background: #041c28;
+    background: #191e25;
 }
 
 .champion-detail-info>view:first-child {
@@ -295,10 +294,22 @@
 }
 
 .rune-recommend {
+    margin-top: 20rpx;
     background-color: #161a20;
     padding: 30rpx 30rpx 30rpx;
     box-sizing: border-box;
     margin-bottom: 20rpx;
+}
+
+.rune-recommend .rune-header {
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+.rune-recommend .rune-header:first-child {
+    margin-top: unset;
 }
 
 .rune-recommend .title {
@@ -317,7 +328,6 @@
     justify-content: space-between;
     box-sizing: border-box;
     padding: 30rpx 0 50rpx 0;
-    height: 100rpx;
     justify-items: center;
     align-content: center;
     align-items: baseline;
@@ -443,7 +453,7 @@
 
 .rune-recommend .rate {
     color: #1dbaa9;
-    font-family: dinot-bold;
+    font-family: dinot-bold, serif;
     text-align: center;
     display: inline-flex;
     margin-top: 10rpx;
@@ -560,7 +570,7 @@
 
 .box-equipment .list .list-item .onstage-text {
     text-align: center;
-    font-family: dinot-bold;
+    font-family: dinot-bold, serif;
     width: 15%;
     color: #1dbaa9;
     font-size: 26rpx;
@@ -569,7 +579,7 @@
 
 .box-equipment .list .list-item .win-text {
     text-align: center;
-    font-family: dinot-bold;
+    font-family: dinot-bold, serif;
     width: 15%;
     font-size: 26rpx;
     line-height: 1;
@@ -653,4 +663,359 @@
     margin-left: 20rpx;
     margin-top: 20rpx;
     line-height: 1.5;
+    margin-right: 20rpx;
+}
+
+.restraint-container {
+    margin-top: 40rpx;
+    display: flex;
+}
+
+.restraint-container .left {
+    display: block;
+    width: 100%;
+    padding-top: 10rpx;
+}
+
+ .history-list {
+     width: 100%;
+     margin-top: 20rpx;
+     vertical-align: middle;
+     justify-content: center;
+     align-items: center;
+}
+
+ .history-list .item.selected {
+    border-color: #b09356;
+     width: 100rpx;
+     height: 100rpx;
+}
+
+ .history-list .item {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 80rpx;
+    height: 80rpx;
+    border: 2rpx solid #424749;
+    padding: 0;
+    box-sizing: border-box;
+    background: #161a20;
+    margin-left: 20rpx;
+    position: relative;
+    cursor: pointer;
+    transition: .3s;
+     display: inline-block;
+}
+
+.history-list .item .img {
+    width: 110%;
+    height: 110%;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.history-scroll {
+    height: 100rpx;
+    white-space: nowrap;
+}
+
+.restraint-container .left .hero-vs-con {
+    font-size: 0;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 120rpx;
+}
+
+.restraint-container .left .hero-vs-con .blue,
+.restraint-container .left .hero-vs-con .red {
+    vertical-align: top;
+    /*width: 100%;*/
+    width: 50%;
+    height: 120rpx;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restraint-container .left .hero-vs-con .red {
+    background: url(https://tft-images.qizue.com/LOL/assets/red-bg.webp) top right no-repeat;
+    background-size: 100% 100%;
+    transform: translateX(11%);
+    align-self: flex-start;
+}
+
+.restraint-container .left .hero-vs-con .red .player-use-details {
+    text-align: right;
+    padding-right: 40rpx;
+}
+
+.restraint-container .left .hero-vs-con .blue .player-use-details .name,
+.restraint-container .left .hero-vs-con .red .player-use-details .name {
+    font-size: 20rpx;
+    color: #fff5e0;
+}
+
+.restraint-container .left .hero-vs-con .blue .player-use-details .win-chance,
+.restraint-container .left .hero-vs-con .red .player-use-details .win-chance {
+    font-family: dinot-bold, serif;
+    margin-top: 4rpx;
+    margin-bottom: 4rpx;
+    color: #fff;
+    font-size: 20rpx;
+    display: flex;
+    justify-content: flex-end;
+    justify-items: flex-end;
+    align-items: center;
+    align-content: center;
+}
+
+.restraint-container .left .hero-vs-con .blue .player-use-details .win-chance .span,
+.restraint-container .left .hero-vs-con .red .player-use-details .win-chance .span {
+    font-size: 24rpx;
+}
+
+.restraint-container .left .hero-vs-con .blue .player-use-details .text,
+.restraint-container .left .hero-vs-con .red .player-use-details .text {
+    font-size: 20rpx;
+    color: #fff;
+}
+
+.restraint-container .left .hero-vs-con .red .img-box {
+    align-self: flex-start;
+    transform: translateY(.05rem);
+}
+
+.restraint-container .left .hero-vs-con .blue .img-box,
+.restraint-container .left .hero-vs-con .red .img-box {
+    position: relative;
+    float: right;
+}
+
+.restraint-container .left .hero-vs-con .blue .img-box .img,
+.restraint-container .left .hero-vs-con .red .img-box .img {
+    width: 100rpx;
+    height: 100rpx;
+    box-sizing: content-box;
+    border-radius: 50%;
+}
+
+.restraint-container .left .hero-vs-con .red .img-box img {
+    border: 4rpx solid #f32643;
+}
+
+.restraint-container .left .hero-vs-con .blue .img-box .posi,
+.restraint-container .left .hero-vs-con .red .img-box .posi {
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: #040a14;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,50%);
+    text-align: center;
+    line-height: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restraint-container .left .hero-vs-con .red .img-box .posi {
+    border: 4rpx solid #f32643;
+}
+
+.restraint-container .left .hero-vs-con .hero-vs-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: url(https://tft-images.qizue.com/LOL/assets/vs.webp) center top no-repeat;
+    background-size: 100% 100%;
+    width: 60rpx;
+    height: 60rpx;
+    z-index: 2;
+    transform: translate3d(-50%,-50%,0);
+}
+
+.restraint-container .left .hero-vs-con .blue {
+    background: url(https://tft-images.qizue.com/LOL/assets/blue-bg.webp) top left no-repeat;
+    background-size: 100% 100%;
+    transform: translateX(-11%);
+    align-self: flex-end;
+}
+
+.restraint-container .left .hero-vs-con .blue .player-use-details {
+    text-align: left;
+    padding-left: 20rpx;
+}
+
+.restraint-container .left .hero-vs-con .blue .img-box .posi {
+    border: 4rpx solid #1575eb;
+}
+
+.restraint-container .left .hero-vs-con .blue .img-box img {
+    border: 4rpx solid #1575eb;
+}
+
+.restraint-container .left .data-table {
+    margin-top: 40rpx;
+}
+
+.restraint-container .left .data-table .item {
+    height: 70rpx;
+    line-height: 70rpx;
+    border-top: 2rpx solid #24282c;
+    text-align: center;
+    position: relative;
+}
+
+.restraint-container .left .data-table .item .span {
+    display: inline-block;
+    vertical-align: top;
+    width: 100rpx;
+    font-size: 20rpx;
+    color: #f32643;
+    font-family: dinot-bold, serif;
+}
+
+.restraint-container .left .data-table .item .span .i {
+    font-style: normal;
+    font-size: 26rpx;
+    display: inline-block;
+}
+
+.restraint-container .left .data-table .item .middle {
+    width: 260rpx;
+    font-size: 22rpx;
+    color: #5e625a;
+    border-left: 1px solid #24282c;
+    border-right: 1px solid #24282c;
+}
+
+.restraint-container .left .data-table .item .span.blue {
+    display: inline-block;
+    vertical-align: top;
+    width: 100rpx;
+    color: #1575eb;
+    border-width: 0;
+    font-family: dinot-bold, serif;
+}
+
+.box-equipment .head .level {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    background-color: #191e25;
+    width: 180rpx;
+    padding: 4rpx 8rpx;
+    border-radius: 8rpx;
+}
+
+.box-equipment .head .level .l {
+    margin-right: 10rpx;
+}
+
+.t-class-minus	 {
+    color: #1dbaa9!important;
+    font-weight: bolder!important;
+}
+
+.t-class-plus	 {
+    color: #1dbaa9!important;
+    font-weight: bolder!important;
+}
+
+.t-class-input {
+    color: #fff5e0!important;
+    font-size: 28rpx;
+}
+
+.list .level-area {
+    /*background-color: #0052d9;*/
+}
+
+.list .level-area  {
+    height: 100rpx;
+    background-clip: content-box;
+    color: #fff;
+    font-size: 22rpx;
+    text-align: center;
+    margin-bottom: 20rpx;
+}
+
+.list .level-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.list .level-info .info {
+    font-size: 30rpx;
+    font-weight: bolder;
+    margin-bottom: 20rpx;
+}
+
+.list .level-info .name {
+    font-size: 22rpx;
+    color: #7d807b;
+}
+
+.bio {
+    font-size: 22rpx;
+}
+
+
+.rune-recommend .rune-header .rune-mini .icon-con::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    top: 50%;
+    z-index: 0;
+}
+
+.rune-recommend .rune-header .rune-mini .icon-con {
+    display: -webkit-flex;
+    justify-content: space-between;
+    position: relative;
+    display: inline-flex;
+}
+
+.rune-recommend .rune-header .rune-mini .icon-con .icon {
+    position: relative;
+    z-index: 1;
+    width: 40rpx;
+    height: 40rpx;
+    line-height: 1;
+    border: 2rpx solid #e8c598;
+    border-radius: 50%;
+    background-color: #13131b;
+    overflow: hidden;
+    text-align: center;
+    margin-right: 20rpx;
+}
+
+.rune-recommend .rune-header .rune-mini .icon-con .icon:last-child {
+    margin-right: unset;
+}
+
+.rune-recommend .rune-header .rune-mini .icon-con .icon .img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    object-fit: cover;
 }

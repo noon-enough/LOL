@@ -1,0 +1,7 @@
+.component-dialog {
+    z-index: 1000;
+    transition: .3s;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+}

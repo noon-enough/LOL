@@ -1,0 +1,193 @@
+
+
+/*装备栏*/
+.equipment-flow {
+    background-color: #161a20;
+    border: 2rpx solid #5d4f30;
+    padding: 0 20rpx 40rpx;
+    min-width: 200rpx;
+    max-width: 700rpx;
+    z-index: 99
+}
+
+.equipment-flow .title {
+    color: #deb762;
+    font-size: 28rpx;
+    padding: 10rpx 0;
+    display: flex;
+    justify-content: start;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    margin: 20rpx;
+}
+
+.equipment-flow .title .span {
+    display: inline-block;
+    font-size: 24rpx;
+    color: #707271;
+    margin-left: 10rpx;
+    /* width: 100%; */
+}
+
+.equipment-flow .title .span .price {
+    color: #c3a259;
+    display: inline-block;
+}
+
+.equipment-flow .title .span .i {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -20rpx;
+    margin-left: 20rpx;
+}
+
+.equipment-flow .m-title {
+    color: #deb762;
+    font-size: 28rpx;
+    line-height: 1.2;
+    margin-top: 20rpx;
+}
+
+.equipment-flow .line {
+    width: 100%;
+    position: relative;
+    height: 2rpx;
+    background-color: #565959
+}
+
+.equipment-flow .line::after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -6rpx;
+    left: 0;
+    width: 8rpx;
+    height: 8rpx;
+    border: 2rpx solid #565959;
+    background-color: #161a20;
+    transform: rotate(45deg)
+}
+
+.equipment-flow .desc {
+    font-size: 24rpx;
+    color: #7e807d;
+    margin-top: 40rpx;
+    margin-bottom: 40rpx;
+    white-space: pre-line
+}
+
+.equipment-flow .synthesis-con {
+    text-align: center;
+    margin-top: 20rpx;
+}
+
+.equipment-flow .synthesis-con .floor2 {
+    margin-top: 80rpx;
+    position: relative
+}
+
+.equipment-flow .synthesis-con .compose3 .hline {
+    position: absolute;
+    display: block;
+    height: 2rpx;
+    width: 360rpx;
+    background-color: #616466;
+    left: 50%;
+    top: -50rpx;
+    transform: translateX(-50%);
+}
+
+.equipment-flow .synthesis-con .compose3 > .imgs {
+    width: 180rpx;
+}
+
+.equipment-flow .synthesis-con .compose3 .floor3 {
+    margin-top: 80rpx;
+    display: flex;
+    position: relative;
+    justify-content: space-between
+}
+
+.equipment-flow .synthesis-con .compose3 .floor3 .hline {
+    position: absolute;
+    display: block;
+    height: 2rpx;
+    width: 120rpx;
+    background-color: #616466;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -40rpx;
+}
+
+.equipment-flow .synthesis-con .compose2 .hline {
+    position: absolute;
+    display: block;
+    height: 2rpx;
+    width: 258rpx;
+    background-color: #616466;
+    top: -50rpx;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.equipment-flow .synthesis-con .compose2 > .imgs {
+    width: 200rpx;
+    margin: 0 30rpx;
+}
+
+.equipment-flow .synthesis-con .compose2 .floor3 {
+    margin-top: 80rpx;
+    display: flex;
+    position: relative;
+    justify-content: space-between
+}
+
+.equipment-flow .synthesis-con .compose2 .floor3 .hline {
+    position: absolute;
+    display: block;
+    height: 2rpx;
+    width: 140rpx;
+    background-color: #616466;
+    top: -70%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.equipment-flow .synthesis-con .single .floor3 {
+    justify-content: center
+}
+
+.equipment-flow .synthesis-con .imgs {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 60rpx;
+}
+
+.equipment-flow .synthesis-con .imgs .img {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.equipment-flow .synthesis-con .topline::before {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 2rpx;
+    height: 32rpx;
+    background-color: #616466;
+    left: 50%;
+    top: -40rpx;
+}
+
+.equipment-flow .synthesis-con .botline::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 2rpx;
+    height: 32rpx;
+    background-color: #616466;
+    left: 50%;
+    top: 60rpx;
+}

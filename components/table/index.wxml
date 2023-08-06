@@ -59,7 +59,6 @@
                               bind:tap="detail"
                               data-hero-session="{{session}}"
                               data-hero-id="{{it.hero_id}}"
-                              shape="circle"
                               size="80"
                               l-class="champion-pic"
                               src="{{it.hero.avatar}}"/>

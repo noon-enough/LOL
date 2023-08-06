@@ -1,19 +1,9 @@
 <l-tab-bar
-        bg-color="#041c28"
+        bg-color="#191e25"
         text-color="#8a8a8a"
         text-selected-color="#d7a75f"
         list="{{list}}"
 />
-<view class="component-switch-filter">
-    <view class="{{curJob ===  'all' ? 'active': ''}}" data-type="all"
-          bind:tap="onSelect">全部定位</view>
-    <view wx:for="{{jobs}}"
-          wx:for-item="job"
-          wx:key="i"
-          bind:tap="onSelect"
-          data-type="{{job.type}}"
-          class="{{curJob ===  job.type ? 'active': ''}}">{{job.name}}</view>
-</view>
 <t-pull-down-refresh
         value="{{isRefresh}}"
         loadingProps="{{loadingProps}}"
@@ -22,8 +12,27 @@
         bind:scroll="onScroll"
         using-custom-navbar="{{true}}"
 >
+    <view class="component-switch-filter">
+        <view class="{{curJob ===  'all' ? 'active': ''}}" data-type="all"
+              bind:tap="onSelect">全部定位</view>
+        <view wx:for="{{jobs}}"
+              wx:for-item="job"
+              wx:key="i"
+              bind:tap="onSelect"
+              data-type="{{job.type}}"
+              class="{{curJob ===  job.type ? 'active': ''}}">{{job.name}}</view>
+    </view>
+    <view class="search">
+        <l-search-bar placeholder="搜索"
+                      bind:linconfirm="searchConfirm"
+                      bind:linclear="searchClear"
+                      bind:linchange="searchChange"
+                      bg-color="#313537"
+                      show-cancel="{{false}}"/>
+    </view>
     <view class="container" style="margin-bottom: 200rpx;">
         <table-fight
+                bind:rowClick="onRowClick"
                 headers="{{tableHeader}}"
                 data="{{ fight }}"
                 stripe="{{ stripe }}"

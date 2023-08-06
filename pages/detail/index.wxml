@@ -104,192 +104,164 @@
                         l-active-class="tab-active-item">
                     <l-tabpanel tab="总览" key="overview" slot="overview">
                         <view class="tab-content">
-                            <view class="rune-recommend">
+                            <view class="rune-recommend" wx:if="{{overview.lane[currLane].rank.length}}">
                                 <view class="title">符文推荐</view>
-                                <view class="rate">
-                                    <view class="onstage-chance p">登场率</view>
-                                    <view class="span">111%</view>
-                                    <view class="win-chance p">胜率</view>
-                                    <view class="win-chance span">111%</view>
-                                </view>
-                                <view class="rune-item">
-                                    <view class="rune-primary-wrap">
-                                        <view class="rune-primary main">
-                                            <view class="rune-box tone1">
-                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/zz.png" class="img"></image>
-                                            </view>
-                                            <view class="p">精密</view>
+                                <block wx:for="{{overview.lane[currLane].rank}}"
+                                       wx:for-index="idx" wx:for-item="rank" wx:key="i">
+                                    <block wx:if="{{idx < 2}}">
+                                        <view class="rate">
+                                            <view class="onstage-chance p">登场率</view>
+                                            <view class="span">{{rank.showrate / 100}}%</view>
+                                            <view class="win-chance p">胜率</view>
+                                            <view class="win-chance span">{{rank.winrate / 100}}%</view>
                                         </view>
-                                        <view class="rune-primary main">
-                                            <view class="rune-box tone1">
-                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/DarkHarvest.png" class="img"></image>
+                                        <view class="rune-item">
+                                            <view class="rune-primary-wrap" wx:if="{{rank.rank[0].main_detail.length}}">
+                                                <view class="rune-primary main" bind:tap="onShowDialog" data-type="rune" data-info="{{rank.mainInfo}}">
+                                                    <view class="rune-box {{rank.mainTone}}">
+                                                        <image src="{{rank.mainInfo.icon}}" class="img"></image>
+                                                    </view>
+                                                    <view class="p">{{rank.mainInfo.name}}</view>
+                                                </view>
+                                                <view wx:for="{{rank.rank[0].main_detail}}"
+                                                      wx:for-index="rk"
+                                                      wx:for-item="rune"
+                                                      wx:key="rk"
+                                                      class="rune-primary {{rk === 0 ? 'main' : ''}}"
+                                                      bind:tap="onShowDialog" data-type="rune" data-info="{{rune}}"
+                                                >
+                                                    <view class="rune-box {{rank.mainTone}}">
+                                                        <image src="{{rune.icon}}" class="img"></image>
+                                                    </view>
+                                                    <view class="p">{{rune.name}}</view>
+                                                </view>
                                             </view>
-                                            <view class="p">黑暗收割</view>
-                                        </view>
-                                        <view class="rune-primary">
-                                            <view class="rune-box tone1">
-                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/SuddenImpact.png" class="img"></image>
+                                            <view class="rune-primary-wrap rune-wrap2" wx:if="{{rank.rank[0].viceperk_detail.length}}">
+                                                <view class="rune-primary aa" bind:tap="onShowDialog" data-type="rune" data-info="{{rank.viceperkInfo}}">
+                                                    <view class="rune-box {{rank.viceperkTone}}">
+                                                        <image src="{{rank.viceperkInfo.icon}}" class="img"></image>
+                                                    </view>
+                                                    <view class="p">{{rank.viceperkInfo.icon}}</view>
+                                                </view>
+                                                <view class="rune-primary"
+                                                      wx:for="{{rank.rank[0].viceperk_detail}}"
+                                                      wx:key="vi"
+                                                      wx:for-index="vi"
+                                                      wx:for-item="rune"
+                                                      bind:tap="onShowDialog" data-type="rune" data-info="{{rune}}"
+                                                >
+                                                    <view class="rune-box {{rank.viceperkTone}}">
+                                                        <image src="{{rune.icon}}" class="img"></image>
+                                                    </view>
+                                                    <view class="p">{{rune.name}}</view>
+                                                </view>
                                             </view>
-                                            <view class="p">猛然冲击</view>
                                         </view>
-                                        <view class="rune-primary">
-                                            <view class="rune-box tone1">
-                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/EyeballCollection.png" class="img"></image>
-                                            </view>
-                                            <view class="p">眼球收集器</view>
-                                        </view>
-                                        <view class="rune-primary">
-                                            <view class="rune-box tone1">
-                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/TreasureHunter.png" class="img"></image>
-                                            </view>
-                                            <view class="p">寻宝猎人</view>
-                                        </view>
-                                    </view>
-                                    <view class="rune-primary-wrap rune-wrap2">
-                                        <view class="rune-primary">
-                                            <view class="rune-box tone5">
-                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/qd.png" class="img"></image>
-                                            </view>
-                                            <view class="p">启迪</view>
-                                        </view>
-                                        <view class="rune-primary">
-                                            <view class="rune-box tone5">
-                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/MagicalFootwear.png" class="img"></image>
-                                            </view>
-                                            <view class="p">神奇之鞋</view>
-                                        </view>
-                                        <view class="rune-primary">
-                                            <view class="rune-box tone5">
-                                                <image src="https://game.gtimg.cn/images/lol/act/img/rune/FuturesMarket.png" class="img"></image>
-                                            </view>
-                                            <view class="p">未来市场</view>
-                                        </view>
-                                    </view>
-                                </view>
+                                    </block>
+                                </block>
                             </view>
                             <view class="equipment-recommend">
-                                <view class="equipment-cont box-equipment">
+                                <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].itemoutjson.length}}">
                                     <view class="head">
                                         <view class="rec-text">出门装推荐</view>
                                         <view class="onstage-text">登场率</view>
                                         <view class="win-text">胜率</view>
                                     </view>
-                                    <view class="list">
-                                        <view class="list-item">
+                                    <view class="list"
+                                          wx:for="{{overview.lane[currLane].itemoutjson}}"
+                                          wx:key="out"
+                                          wx:for-item="itemout"
+                                          wx:for-index="idx"
+                                    >
+                                        <view class="list-item" wx:if="{{idx < 3}}">
                                             <view class="equipment-box">
-                                                <view class="equipment">
-                                                    <image src="https://game.gtimg.cn/images/lol/act/img/item/1102.png"
-                                                           class="img"
-                                                    />
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="equipment" data-info="{{itemout.item1}}">
+                                                    <image src="{{itemout.item1.iconPath}}" class="img"/>
                                                 </view>
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/2003.png"
-                                                            class="img"
-                                                    />
+                                                <view class="equipment" wx:if="{{itemout.item2}}" bind:tap="onShowDialog" data-type="equipment" data-info="{{itemout.item2}}">
+                                                    <image src="{{itemout.item2.iconPath}}" class="img"/>
                                                 </view>
                                             </view>
-                                            <view class="onstage-text">52.19%</view>
-                                            <view class="win-text">53.65%</view>
-                                        </view>
-                                        <view class="list-item">
-                                            <view class="equipment-box">
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/1101.png"
-                                                            class="img"
-                                                    />
-                                                </view>
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/2003.png"
-                                                            class="img"
-                                                    />
-                                                </view>
-                                            </view>
-                                            <view class="onstage-text">22.82%</view>
-                                            <view class="win-text">52.83%</view>
+                                            <view class="onstage-text">{{itemout.showrate / 100}}%</view>
+                                            <view class="win-text">{{itemout.winrate / 100}}%</view>
                                         </view>
                                     </view>
                                 </view>
-                                <view class="equipment-cont box-equipment">
+                                <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].core3itemjson.length}}">
                                     <view class="head">
-                                        <view class="rec-text">神话装推荐</view>
+                                        <view class="rec-text">三件套推荐</view>
                                         <view class="onstage-text">登场率</view>
                                         <view class="win-text">胜率</view>
                                     </view>
-                                    <view class="list">
-                                        <view class="list-item">
+                                    <view class="list"
+                                          wx:for="{{overview.lane[currLane].core3itemjson}}"
+                                          wx:for-index="idx"
+                                          wx:for-item="core"
+                                          wx:key="id"
+                                    >
+                                        <view class="list-item" wx:if="{{idx < 3}}">
                                             <view class="equipment-box">
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6691.png"
-                                                            class="img"
-                                                    />
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="equipment" data-info="{{core.item1}}">
+                                                    <image src="{{core.item1.iconPath}}" class="img"/>
                                                 </view>
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6676.png"
-                                                            class="img"
-                                                    />
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="equipment" data-info="{{core.item2}}">
+                                                    <image src="{{core.item2.iconPath}}" class="img" />
                                                 </view>
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/3814.png"
-                                                            class="img"
-                                                    />
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="equipment" data-info="{{core.item3}}">
+                                                    <image src="{{core.item3.iconPath}}" class="img" />
                                                 </view>
                                             </view>
-                                            <view class="onstage-text">9.64%</view>
-                                            <view class="win-text">61.68%</view>
+                                            <view class="onstage-text">{{core.showrate / 100}}%</view>
+                                            <view class="win-text">{{core.winrate / 100}}%</view>
                                         </view>
-                                        <view class="list-item">
+                                    </view>
+                                </view>
+                                <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].shoesjson.length}}">
+                                    <view class="head">
+                                        <view class="rec-text">鞋子推荐</view>
+                                        <view class="onstage-text">登场率</view>
+                                        <view class="win-text">胜率</view>
+                                    </view>
+                                    <view class="list"
+                                          wx:for="{{overview.lane[currLane].shoesjson}}"
+                                          wx:key="out"
+                                          wx:for-item="itemout"
+                                          wx:for-index="idx"
+                                    >
+                                        <view class="list-item" wx:if="{{idx < 2}}">
                                             <view class="equipment-box">
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6691.png"
-                                                            class="img"
-                                                    />
-                                                </view>
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6676.png"
-                                                            class="img"
-                                                    />
-                                                </view>
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6694.png"
-                                                            class="img"
-                                                    />
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="equipment" data-info="{{itemout.item}}">
+                                                    <image src="{{itemout.item.iconPath}}" class="img"/>
                                                 </view>
                                             </view>
-                                            <view class="onstage-text">7.97%</view>
-                                            <view class="win-text">62.08%</view>
+                                            <view class="onstage-text">{{itemout.showrate / 100}}%</view>
+                                            <view class="win-text">{{itemout.winrate / 100}}%</view>
                                         </view>
-                                        <view class="list-item">
+                                    </view>
+                                </view>
+                                <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].spellidjson.length}}">
+                                    <view class="head">
+                                        <view class="rec-text">召唤师技能</view>
+                                        <view class="onstage-text">登场率</view>
+                                        <view class="win-text">胜率</view>
+                                    </view>
+                                    <view class="list"
+                                          wx:for="{{overview.lane[currLane].spellidjson}}"
+                                          wx:key="out"
+                                          wx:for-item="itemout"
+                                          wx:for-index="idx"
+                                    >
+                                        <view class="list-item" wx:if="{{idx < 3}}">
                                             <view class="equipment-box">
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6691.png"
-                                                            class="img"
-                                                    />
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="summoners" data-info="{{itemout.item1}}">
+                                                    <image src="{{itemout.item1.icon}}" class="img"/>
                                                 </view>
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/6676.png"
-                                                            class="img"
-                                                    />
-                                                </view>
-                                                <view class="equipment">
-                                                    <image
-                                                            src="https://game.gtimg.cn/images/lol/act/img/item/3004.png"
-                                                            class="img"
-                                                    />
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="summoners" data-info="{{itemout.item2}}">
+                                                    <image src="{{itemout.item2.icon}}" class="img"/>
                                                 </view>
                                             </view>
-                                            <view class="onstage-text">5.19%</view>
-                                            <view class="win-text">60.87%</view>
+                                            <view class="onstage-text">{{itemout.showrate / 100}}%</view>
+                                            <view class="win-text">{{itemout.winrate / 100}}%</view>
                                         </view>
                                     </view>
                                 </view>
@@ -321,7 +293,75 @@
                                             </view>
                                         </view>
                                         <view class="description">
-                                            {{skill[selectKey].description}}
+                                            <text>{{skill[selectKey].description}}</text>
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class="equipment-recommend" style="margin-top: 20rpx;">
+                                    <view class="equipment-cont box-equipment">
+                                        <view class="head">
+                                            <view class="rec-text">数值</view>
+                                            <view class="win-text level" style="width: auto;">
+                                                <view class="l">等级</view>
+                                                <t-stepper defaultValue="1"
+                                                           bind:change="onLevelChange"
+                                                           t-class-minus="t-class-minus"
+                                                           t-class-plus="t-class-plus"
+                                                           t-class-input="t-class-input"
+                                                           size="small" max="18" min="1"/>
+                                            </view>
+                                        </view>
+                                        <view class="list" style="margin: 20rpx">
+                                            <t-row gutter="10">
+                                                <t-col span="6" t-class="level-area">
+                                                    <view class="level-info">
+                                                        <view class="info">{{level.attackdamage}}</view>
+                                                        <view class="name">攻击力</view>
+                                                    </view>
+                                                </t-col>
+                                                <t-col span="6" t-class="level-area">
+                                                    <view class="level-info">
+                                                        <view class="info">{{level.attackspeed}}</view>
+                                                        <view class="name">攻击速度</view>
+                                                    </view>
+                                                </t-col>
+                                                <t-col span="6" t-class="level-area">
+                                                    <view class="level-info">
+                                                        <view class="info">{{level.attackrange}}</view>
+                                                        <view class="name">攻击距离</view>
+                                                    </view>
+                                                </t-col>
+                                                <t-col span="6" t-class="level-area">
+                                                    <view class="level-info">
+                                                        <view class="info">{{level.movespeed}}</view>
+                                                        <view class="name">移动速度</view>
+                                                    </view>
+                                                </t-col>
+                                                <t-col span="6" t-class="level-area">
+                                                    <view class="level-info">
+                                                        <view class="info">{{level.hp}}</view>
+                                                        <view class="name">生命值</view>
+                                                    </view>
+                                                </t-col>
+                                                <t-col span="6" t-class="level-area">
+                                                    <view class="level-info">
+                                                        <view class="info">{{level.mp}}</view>
+                                                        <view class="name">魔法值</view>
+                                                    </view>
+                                                </t-col>
+                                                <t-col span="6" t-class="level-area">
+                                                    <view class="level-info">
+                                                        <view class="info">{{level.armor}}</view>
+                                                        <view class="name">护甲值</view>
+                                                    </view>
+                                                </t-col>
+                                                <t-col span="6" t-class="level-area">
+                                                    <view class="level-info">
+                                                        <view class="info">{{level.spellblock}}</view>
+                                                        <view class="name">魔抗值</view>
+                                                    </view>
+                                                </t-col>
+                                            </t-row>
                                         </view>
                                     </view>
                                 </view>
@@ -330,18 +370,264 @@
                     </l-tabpanel>
                     <l-tabpanel tab="英雄克制" key="1v1" slot="1v1">
                         <view class="tab-content">
+                            <scroll-view scroll-x class="history-scroll history-list" wx:if="{{overview.fight[currLane].length}}">
+                                    <view
+                                          wx:for="{{overview.fight[currLane]}}"
+                                          wx:for-item="item"
+                                          wx:for-index="idx"
+                                          wx:key="i"
+                                          class="item {{fightSelectHeroId === item.championid2 ? 'selected' : ''}}"
+                                    >
+                                        <image
+                                                bind:tap="onSelect1v1Hero"
+                                                data-hero-id="{{item.championid2}}"
+                                                class="img" src="{{item.hero2.avatar}}"
+                                                 webp="{{true}}"
+                                                 lazy="{{true}}"
+                                                 height="40" width="40" />
+                                        {{item.hero2.avatar}}
+                                    </view>
+                            </scroll-view>
+                            <view class="restraint-container" wx:if="{{vs}}">
+                                <view class="left">
+                                    <view class="hero-vs-con">
+                                        <view class="red">
+                                            <view class="player-use-details">
+                                                <view class="name">{{vs.hero1.name}}</view>
+                                                <view class="win-chance">
+                                                    <view class="span">{{vs.hero1.winrate / 100}}</view>%
+                                                </view>
+                                                <view class="text">胜率</view>
+                                            </view>
+                                            <view class="img-box">
+                                                <t-image src="{{vs.hero1.avatar}}" class="img"/>
+                                                <view class="posi"><view class="{{currLaneIcon}}"></view></view>
+                                            </view>
+                                        </view>
+                                        <view class="hero-vs-icon"></view>
+                                        <view class="blue">
+                                            <view class="img-box">
+                                                <t-image src="{{vs.hero2.avatar}}" class="img"/>
+                                                <view class="posi"><view class="{{currLaneIcon}}"></view></view>
+                                            </view>
+                                            <view class="player-use-details">
+                                                <view class="name">{{vs.hero2.name}}</view>
+                                                <view class="win-chance"><view class="span">{{vs.hero2.winrate / 100}}</view>%</view>
+                                                <view class="text">胜率</view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class="data-table">
+                                        <view class="item">
+                                            <view class="span">
+                                                <text class="i">{{vs.hero1.ikillrate/100}}</text> %
+                                            </view>
+                                            <view class="span middle">对线击杀率</view>
+                                            <view class="span blue">
+                                                <view class="i">{{vs.hero2.ikillrate/100}}</view>%
+                                            </view>
+                                        </view>
+                                        <view class="item">
+                                            <view class="span">
+                                                <view class="i">{{vs.hero1.kda/100}} : 1</view>
+                                            </view>
+                                            <view class="span middle">KDA</view>
+                                            <view class="span blue">
+                                                <view class="i">{{vs.hero2.kda/100}} : 1</view>
+                                            </view>
+                                        </view>
+                                        <view class="item">
+                                            <view class="span">
+                                                <view class="i">{{vs.hero1.goldpermin/100}}</view>
+                                            </view>
+                                            <view class="span middle">每分钟金钱</view>
+                                            <view class="span blue">
+                                                <view class="i">{{vs.hero2.goldpermin/100}}</view>
+                                            </view>
+                                            <!---->
+                                        </view>
+                                        <view class="item">
+                                            <view class="span"><view class="i">{{vs.hero1.mintime}}</view></view>
+                                            <view class="span middle">线上摧毁第一座防御塔时间</view>
+                                            <view class="span blue"><view class="i">{{vs.hero2.mintime}}</view></view>
+                                            <!---->
+                                        </view>
+                                        <view class="item">
+                                           <view class="span"><view class="i">{{vs.hero1.teamkillrate/100}}</view>%</view>
+                                            <view class="span middle">击杀贡献率</view>
+                                            <view class="span blue"><view class="i">{{vs.hero2.teamkillrate/100}}</view>%</view>
+                                            <!---->
+                                        </view>
+                                        <view class="item">
+                                           <view class="span"><view class="i">{{vs.hero1.totaldamagedealt/100}}</view></view>
+                                            <view class="span middle">对英雄造成的伤害</view>
+                                            <view class="span blue"><view class="i">{{vs.hero2.totaldamagedealt/100}}</view></view>
+                                            <!---->
+                                        </view>
+                                        <view class="item">
+                                           <view class="span"><view class="i">{{vs.hero1.totaldamagetaken/100}}</view></view>
+                                            <view class="span middle">场均承受伤害</view>
+                                            <view class="span blue"><view class="i">{{vs.hero2.totaldamagetaken/100}}</view></view>
+                                            <!---->
+                                        </view>
+                                        <view class="item">
+                                           <view class="span"><view class="i">{{vs.hero1.lanewinrate/100}}</view>%</view>
+                                            <view class="span middle">单胜率</view>
+                                            <view class="span blue"><view class="i">{{vs.hero2.lanewinrate/100}}</view>%</view>
+                                            <!---->
+                                        </view>
+                                        <view class="item">
+                                            <!---->
+                                            <view class="span"><view class="i">{{vs.hero1.lanshowrate/100}}</view>%</view>
+                                            <view class="span middle">单登场率</view>
+                                            <view class="span blue"><view class="i">{{vs.hero2.lanshowrate/100}}</view>%</view>
+                                        </view>
+                                        <view class="item">
+                                            <!---->
+                                            <view class="span"><view class="i">{{vs.hero1.banrate/100}}</view>%</view>
+                                            <view class="span middle">禁用率</view>
+                                            <view class="span blue"><view class="i">{{vs.hero1.banrate/100}}</view>%</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
                         </view>
                     </l-tabpanel>
                     <l-tabpanel tab="符文推荐" key="rune" slot="rune">
                         <view class="tab-content">
+                            <view class="rune-recommend" wx:if="{{overview.lane[currLane].rank.length}}">
+                                <view class="title">符文推荐</view>
+                                <block wx:for="{{overview.lane[currLane].rank}}"
+                                       wx:for-index="idx" wx:for-item="rank" wx:key="i">
+                                    <view class="rune-header">
+                                        <view class="rate">
+                                            <view class="onstage-chance p">登场率</view>
+                                            <view class="span">{{rank.showrate / 100}}%</view>
+                                            <view class="win-chance p">胜率</view>
+                                            <view class="win-chance span">{{rank.winrate / 100}}%</view>
+                                        </view>
+                                        <view class="rune-mini" wx:if="{{rank.rank[0].mini_detail.length}}">
+                                            <view class="icon-con" wx:for="{{rank.rank[0].mini_detail}}"
+                                                  wx:for-item="mini"
+                                                  wx:for-index="miniIdx" wx:key="miniIdx">
+                                                <view class="icon" bind:tap="onShowDialog" data-type="rune" data-info="{{mini}}">
+                                                    <image class="img" src="{{mini.icon}}"/>
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class="rune-item">
+                                        <view class="rune-primary-wrap" wx:if="{{rank.rank[0].main_detail.length}}">
+                                            <view class="rune-primary main">
+                                                <view class="rune-box {{rank.mainTone}}">
+                                                    <image src="{{rank.mainInfo.icon}}" class="img"></image>
+                                                </view>
+                                                <view class="p">{{rank.mainInfo.name}}</view>
+                                            </view>
+                                            <view wx:for="{{rank.rank[0].main_detail}}"
+                                                  wx:for-index="rk"
+                                                  wx:for-item="rune"
+                                                  wx:key="rk"
+                                                  class="rune-primary {{rk === 0 ? 'main' : ''}}"
+                                                  bind:tap="onShowDialog" data-type="rune" data-info="{{rune}}"
+                                            >
+                                                <view class="rune-box {{rank.mainTone}}">
+                                                    <image src="{{rune.icon}}" class="img"></image>
+                                                </view>
+                                                <view class="p">{{rune.name}}</view>
+                                            </view>
+                                        </view>
+                                        <view class="rune-primary-wrap rune-wrap2" wx:if="{{rank.rank[0].viceperk_detail.length}}">
+                                            <view class="rune-primary aa">
+                                                <view class="rune-box {{rank.viceperkTone}}">
+                                                    <image src="{{rank.viceperkInfo.icon}}" class="img"></image>
+                                                </view>
+                                                <view class="p">{{rank.viceperkInfo.icon}}</view>
+                                            </view>
+                                            <view class="rune-primary"
+                                                  wx:for="{{rank.rank[0].viceperk_detail}}"
+                                                  wx:key="vi"
+                                                  wx:for-index="vi"
+                                                  wx:for-item="rune"
+                                                  bind:tap="onShowDialog" data-type="rune" data-info="{{rune}}"
+                                            >
+                                                <view class="rune-box {{rank.viceperkTone}}">
+                                                    <image src="{{rune.icon}}" class="img"></image>
+                                                </view>
+                                                <view class="p">{{rune.name}}</view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </block>
+                            </view>
                         </view>
                     </l-tabpanel>
                     <l-tabpanel tab="装备推荐" key="equipment" slot="equipment">
                         <view class="tab-content">
+                            <view class="equipment-recommend">
+                                <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].core3itemjson.length}}">
+                                    <view class="head">
+                                        <view class="rec-text">三件套推荐</view>
+                                        <view class="onstage-text">登场率</view>
+                                        <view class="win-text">胜率</view>
+                                    </view>
+                                    <view class="list"
+                                          wx:for="{{overview.lane[currLane].core3itemjson}}"
+                                          wx:for-index="idx"
+                                          wx:for-item="core"
+                                          wx:key="id"
+                                    >
+                                        <view class="list-item">
+                                            <view class="equipment-box">
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="equipment" data-info="{{core.item1}}">
+                                                    <image src="{{core.item1.iconPath}}" class="img"/>
+                                                </view>
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="equipment" data-info="{{core.item1}}">
+                                                    <image src="{{core.item2.iconPath}}" class="img" />
+                                                </view>
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="equipment" data-info="{{core.item1}}">
+                                                    <image src="{{core.item3.iconPath}}" class="img" />
+                                                </view>
+                                            </view>
+                                            <view class="onstage-text">{{core.showrate / 100}}%</view>
+                                            <view class="win-text">{{core.winrate / 100}}%</view>
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].hold3.length}}">
+                                    <view class="head">
+                                        <view class="rec-text">其他装备</view>
+                                        <view class="onstage-text">登场率</view>
+                                        <view class="win-text">胜率</view>
+                                    </view>
+                                    <view class="list"
+                                          wx:for="{{overview.lane[currLane].hold3}}"
+                                          wx:for-index="idx"
+                                          wx:for-item="core"
+                                          wx:key="id"
+                                    >
+                                        <view class="list-item" wx:if="{{core.item.iconPath}}">
+                                            <view class="equipment-box">
+                                                <view class="equipment" bind:tap="onShowDialog" data-type="equipment" data-info="{{core.item}}">
+                                                    <image src="{{core.item.iconPath}}" class="img"/>
+                                                </view>
+                                            </view>
+                                            <view class="onstage-text">{{core.showrate / 100}}%</view>
+                                            <view class="win-text">{{core.winrate / 100}}%</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
                         </view>
                     </l-tabpanel>
                 </l-tabs>
             </view>
         </view>
     </view>
+    <l-mask show="{{is_show_dialog_mask}}" bind:lintap="changeMask" center="{{false}}">
+        <view class="component-dialog active tooltip-follow"
+              style="position: fixed; pointer-events: none;top: 30%;">
+            <lol-dialog payload="{{dialogData}}" type="{{dialogType}}"></lol-dialog>
+        </view>
+    </l-mask>
 </capsule-bar>

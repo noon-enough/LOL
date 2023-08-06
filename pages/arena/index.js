@@ -104,4 +104,11 @@ Page({
 
         that.getArena()
     },
+    onShareAppMessage(options) {
+        let that = this
+        return {
+            title: `【斗魂竞技场英雄排行】英雄联盟LOL开黑上分助手，国服玩家都在用的上分小程序`,
+            path: `/pages/arena/index`,
+        }
+    },
 });

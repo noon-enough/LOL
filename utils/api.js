@@ -1,6 +1,5 @@
 import {get} from './http'
 
-
 /**
  *
  * @param lane
@@ -20,6 +19,10 @@ function getHeroDetail(id = 0) {
     return get(`/lol/champions/${id}`)
 }
 
+function getHeroOverview(id = 0) {
+    return get(`/lol/champions/${id}/detail`)
+}
+
 function getFight(job = "all") {
     return get(`/lol/fight?job=${job}`)
 }
@@ -35,4 +38,9 @@ function getHeroSkill(id = 0) {
 function getEquipment(map = 0, classify = "all") {
     return get(`/lol/equipment?map=${map}&class=${classify}`)
 }
-module.exports = {getRanking, getHero, getHeroDetail, getFight, getArena, getEquipment, getHeroSkill}
+
+function get1V1(uid = 0, target = 0, lane = "mid") {
+    return get(`/lol/champions/${uid}/vs/${target}?lane=${lane}`)
+}
+module.exports = {getRanking, getHero, getHeroDetail, getFight, getArena,
+    getEquipment, getHeroSkill, getHeroOverview, get1V1}
