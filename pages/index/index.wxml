@@ -13,6 +13,7 @@
         using-custom-navbar="{{true}}"
 >
     <view class="component-switch-filter">
+        <view class="{{lane === 'all' ? 'active': ''}}" data-type="all" bind:tap="onSelect">全部位置</view>
         <view wx:for="{{positions}}"
               wx:for-item="position"
               wx:key="i"

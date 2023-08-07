@@ -22,7 +22,10 @@ Page({
         levelDefault: 1,
         is_show_dialog_mask: false,
         dialogData: {},
-        dialogType: "equipment"
+        dialogType: "equipment",
+        easy_order: [],
+        hard_order: [],
+        fight_tab: "easy_order",
     },
     onLoad: function (options) {
         let that = this,
@@ -61,6 +64,8 @@ Page({
                 fightSelectHeroId: fightSelectHeroId,
                 fightSelectHeroData: h,
             })
+
+            that.getFightEasyHardOrder()
         })
     },
     getHeroSkill() {
@@ -304,4 +309,38 @@ Page({
             path: `/pages/detail/index?id=${id}`,
         }
     },
+    getFightEasyHardOrder() {
+        let that = this,
+            lane = that.data.currLane,
+            overview = that.data.overview,
+            payload = overview.fight[lane],
+            easy_order = [],
+            hard_order = []
+
+        easy_order = payload.sort((a, b) => b.winrate - a.winrate).slice(0, 5)
+        hard_order = payload.sort((a, b) => a.winrate - b.winrate).slice(0, 5)
+
+        that.setData({
+            hard_order: hard_order,
+            easy_order: easy_order,
+        })
+    },
+    onChangeFightTab(e) {
+        let that = this,
+            tab = e.currentTarget.dataset.tab
+
+        that.setData({
+            fight_tab: tab,
+        })
+    },
+    onChange1V1(e) {
+        let that = this,
+            id = e.currentTarget.dataset.heroId
+
+        that.setData({
+            fightSelectHeroId: id,
+            activeKey: '1v1'
+        })
+        that.get1V1()
+    }
 });

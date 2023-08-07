@@ -6,7 +6,7 @@
     margin-top: 20rpx;
     margin-bottom: 20rpx;
     /* margin-left: 20rpx; */
-    justify-content: space-around;
+    /*justify-content: space-around;*/
 }
 
 .component-switch-filter2 view.active,

@@ -41,9 +41,7 @@
           >
               <block wx:if="{{head['prop'] === 'ranking'}}">
                   <view class="order">
-                      <view class="num">
-                          {{it[head["prop"]]}}
-                      </view>
+                      <view class="num">{{idx + 1}}</view>
                       <view wx:if="{{it.order !== 0}}"
                             class="order-ranking"
                             style="color: {{it.order >= 1 ? 'green': 'red'}}">

@@ -22,6 +22,7 @@
                   wx:for-index="index"
             >{{role.name}}</view>
         </block>
+        <view class="tft">在云顶/金铲铲中查看</view>
         <view class="champion-detail-info">
             <view class="detail-info-1" style="background: transparent;top: -90rpx;">
                 <view class="component-champion">
@@ -159,6 +160,57 @@
                                         </view>
                                     </block>
                                 </block>
+                            </view>
+                            <!---优劣势对线--->
+                            <view class="alignment-wrap">
+                                <view class="tab-con">
+                                    <view bind:tap="onChangeFightTab"
+                                          data-tab="easy_order"
+                                          class="a {{fight_tab === 'easy_order' ? 'on' : ''}}">优势对线</view>
+                                    <view bind:tap="onChangeFightTab"
+                                          data-tab="hard_order"
+                                          class="a {{fight_tab === 'hard_order' ? 'on' : ''}}">劣势对线</view>
+                                </view>
+                                <view class="alignment-list">
+                                    <view class="list-item"
+                                          wx:for="{{easy_order}}"
+                                          wx:for-index="idx"
+                                          wx:for-item="easy"
+                                          wx:key="idx"
+                                          wx:if="{{fight_tab === 'easy_order'}}"
+                                    >
+                                        <view class="span idx">{{idx + 1}}</view>
+                                        <view class="head-pic">
+                                            <image class="image" src="{{easy.hero2.avatar}}"/>
+                                        </view>
+                                        <view class="progress-box">
+                                            <view class="progress-bar" style="width: {{easy.winrate / 100}}%;"></view>
+                                            <view class="span">{{easy.winrate / 100}}%</view>
+                                        </view>
+                                        <view class="aspan"
+                                              bind:tap="onChange1V1"
+                                              data-hero-id="{{easy.hero2.id}}">查看详情</view>
+                                    </view>
+                                    <view class="list-item"
+                                          wx:for="{{hard_order}}"
+                                          wx:for-index="idx"
+                                          wx:for-item="easy"
+                                          wx:key="idx"
+                                          wx:if="{{fight_tab === 'hard_order'}}"
+                                    >
+                                        <view class="span idx">{{idx + 1}}</view>
+                                        <view class="head-pic">
+                                            <image class="image" src="{{easy.hero2.avatar}}"/>
+                                        </view>
+                                        <view class="progress-box">
+                                            <view class="progress-bar" style="width: {{easy.winrate / 100}}%;"></view>
+                                            <view class="span">{{easy.winrate / 100}}%</view>
+                                        </view>
+                                        <view class="aspan"
+                                              bind:tap="onChange1V1"
+                                              data-hero-id="{{easy.hero2.id}}">查看详情</view>
+                                    </view>
+                                </view>
                             </view>
                             <view class="equipment-recommend">
                                 <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].itemoutjson.length}}">
