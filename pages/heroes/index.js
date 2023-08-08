@@ -19,12 +19,17 @@ Page({
     onShow: function(options) {
         let that = this,
             selectPos = app.globalData.heroes.pos,
-            selectJob = app.globalData.heroes.job
-        console.log('onShow', selectPos, selectJob)
-        that.setData({
-            selectPos: selectPos,
-            selectJob: selectJob
-        })
+            selectJob = app.globalData.heroes.job,
+            currPos = that.data.selectPos,
+            currJob = that.data.curJob
+        if (currJob !== selectJob || currPos !== selectPos) {
+            console.log('onShow', selectPos, selectJob)
+            that.setData({
+                selectPos: selectPos,
+                selectJob: selectJob
+            })
+            that.getHero()
+        }
     },
     onLoad: function (options) {
         let that = this,
