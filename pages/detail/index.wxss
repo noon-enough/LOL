@@ -131,6 +131,7 @@
     margin: 20rpx 10rpx;
     text-align: right;
     right: 20rpx;
+    z-index: 99999;
 }
 
 .hero-details .info-list .item {

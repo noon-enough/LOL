@@ -22,7 +22,12 @@
                   wx:for-index="index"
             >{{role.name}}</view>
         </block>
-        <view class="tft">在云顶/金铲铲中查看</view>
+        <view class="tft"
+              data-id="{{info.tft_info.id}}"
+              data-name="{{info.tft_info.name}}"
+              data-session="{{info.tft_info.session}}"
+              bind:tap="onOpenTFTMiniProc"
+              wx:if="{{info.tft_info}}">在云顶/金铲铲中查看</view>
         <view class="champion-detail-info">
             <view class="detail-info-1" style="background: transparent;top: -90rpx;">
                 <view class="component-champion">

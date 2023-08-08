@@ -342,5 +342,19 @@ Page({
             activeKey: '1v1'
         })
         that.get1V1()
+    },
+    onOpenTFTMiniProc(e) {
+        let that = this,
+            id = e.currentTarget.dataset.id,
+            name = e.currentTarget.dataset.name,
+            session = e.currentTarget.dataset.session
+
+        console.log('onOpenTFTMiniProc', e.currentTarget.dataset)
+        wx.navigateToMiniProgram({
+            appId: 'wx3adcaf55195f1cfa',  //要打开的小程序appid
+            path: `/pages/detail/index?session=${session}&id=${id}`,  //要打开另一个小程序的页面和传递的参数
+            envVersion: 'release', //打开小程序的版本（体验版trial；开发版develop；正式版release）
+            success(res) {}
+        })
     }
 });

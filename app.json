@@ -66,5 +66,8 @@
         "selectedIconPath":"/assets/tabbar/fight-selected.png"
       }
     ]
-  }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx3adcaf55195f1cfa"
+  ]
 }
