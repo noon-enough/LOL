@@ -27,5 +27,9 @@ App({
             statusBarHeight: 0,
             titleBarHeight: 0,
         },
+        heroes: {
+            job: "all",
+            pos: "all"
+        }
     },
 })

@@ -12,13 +12,30 @@ Page({
         list: app.globalData.tabbar,
         positions: LOL_CONFIG.hero_pos,
         jobs: LOL_CONFIG.hero_job,
-        selectPos: 'all',
-        selectJob: 'all',
+        selectPos: "",
+        selectJob: "",
         heroes: [],
     },
+    onShow: function(options) {
+        let that = this,
+            selectPos = app.globalData.heroes.pos,
+            selectJob = app.globalData.heroes.job
+        console.log('onShow', selectPos, selectJob)
+        that.setData({
+            selectPos: selectPos,
+            selectJob: selectJob
+        })
+    },
     onLoad: function (options) {
-        let that = this
+        let that = this,
+            selectPos = app.globalData.heroes.pos,
+            selectJob = app.globalData.heroes.job
         wx.showLoading()
+        console.log('onLoad', selectPos, selectJob)
+        that.setData({
+            selectPos: selectPos,
+            selectJob: selectJob
+        })
         that.getHero()
     },
     getHero() {

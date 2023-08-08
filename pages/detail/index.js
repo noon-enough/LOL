@@ -1,5 +1,5 @@
 import {get1V1, getHeroDetail, getHeroOverview, getHeroSkill} from "../../utils/api";
-import {getIconByType, getNameByType, getPositions, historyBack, showToast} from "../../utils/util";
+import {getIconByType, getNameByType, heroDetail, historyBack, showToast} from "../../utils/util";
 import {LOL_CONFIG} from "../../utils/config";
 
 const app = getApp()
@@ -88,8 +88,6 @@ Page({
                     const obj = data[key]
                     let description = obj.description; // 获取字段 x 的值
                     description = description.replace(/\\n/g,'\n')
-                    console.log(`Key: ${key}, description: ${description}`)
-
                     __[key] = {...obj, description: description}
                 }
             }
@@ -329,6 +327,7 @@ Page({
         let that = this,
             tab = e.currentTarget.dataset.tab
 
+        console.log('onChangeFightTab', tab)
         that.setData({
             fight_tab: tab,
         })
@@ -355,6 +354,23 @@ Page({
             path: `/pages/detail/index?session=${session}&id=${id}`,  //要打开另一个小程序的页面和传递的参数
             envVersion: 'release', //打开小程序的版本（体验版trial；开发版develop；正式版release）
             success(res) {}
+        })
+    },
+    detail(e) {
+        let id = e.currentTarget.dataset.heroId
+        console.log('detail', e)
+        heroDetail(id)
+    },
+    onHeroByType(e) {
+        let that = this
+        app.globalData.heroes.job = e.currentTarget.dataset.type
+        console.log('onHeroByType', app.globalData.heroes)
+        that.onGoToHeroes()
+    },
+    onGoToHeroes() {
+        let that = this
+        wx.switchTab({
+            url: `/pages/heroes/index`
         })
     }
 });

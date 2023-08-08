@@ -13,21 +13,26 @@
            mode="widthFix"
            lazy-load
            src="{{info.original_image}}" />
-    <view class="detail-main" style="top: {{navigationBarHeight - capsuleBarHeight - 180}}rpx">
-        <block wx:if="{{info.roles}}">
+    <block wx:if="{{info.roles}}">
+        <view class="hero-type-list">
             <view class="hero-type"
                   wx:for="{{info.roles}}"
                   wx:key="i"
                   wx:for-item="role"
                   wx:for-index="index"
+                  data-type="{{role.type}}"
+                  data-name="{{role.name}}"
+                  bind:tap="onHeroByType"
             >{{role.name}}</view>
-        </block>
-        <view class="tft"
-              data-id="{{info.tft_info.id}}"
-              data-name="{{info.tft_info.name}}"
-              data-session="{{info.tft_info.session}}"
-              bind:tap="onOpenTFTMiniProc"
-              wx:if="{{info.tft_info}}">在云顶/金铲铲中查看</view>
+        </view>
+    </block>
+    <view class="tft"
+          data-id="{{info.tft_info.id}}"
+          data-name="{{info.tft_info.name}}"
+          data-session="{{info.tft_info.session}}"
+          bind:tap="onOpenTFTMiniProc"
+          wx:if="{{info.tft_info.id}}">在云顶/金铲铲中查看</view>
+    <view class="detail-main" style="top: {{navigationBarHeight - capsuleBarHeight - 100}}rpx">
         <view class="champion-detail-info">
             <view class="detail-info-1" style="background: transparent;top: -90rpx;">
                 <view class="component-champion">
@@ -110,6 +115,19 @@
                         l-active-class="tab-active-item">
                     <l-tabpanel tab="总览" key="overview" slot="overview">
                         <view class="tab-content">
+                            <!--最佳双排-->
+                            <view class="bestdb" wx:if="{{info.double_hero_info.length}}">
+                                <view class="span">最佳双排</view>
+                                <block wx:for="{{info.double_hero_info}}"
+                                       wx:for-index="idx" wx:for-item="double" wx:key="i">
+                                    <view class="item"
+                                          data-hero-id="{{double.hero.id}}"
+                                          bind:tap="detail">
+                                        <image class="image" src="{{double.hero.avatar}}"></image>
+                                    </view>
+                                </block>
+                            </view>
+                            <!--符文推荐-->
                             <view class="rune-recommend" wx:if="{{overview.lane[currLane].rank.length}}">
                                 <view class="title">符文推荐</view>
                                 <block wx:for="{{overview.lane[currLane].rank}}"
@@ -185,7 +203,9 @@
                                           wx:if="{{fight_tab === 'easy_order'}}"
                                     >
                                         <view class="span idx">{{idx + 1}}</view>
-                                        <view class="head-pic">
+                                        <view class="head-pic"
+                                              data-hero-id="{{easy.hero2.id}}"
+                                              bind:tap="detail">
                                             <image class="image" src="{{easy.hero2.avatar}}"/>
                                         </view>
                                         <view class="progress-box">
@@ -204,7 +224,9 @@
                                           wx:if="{{fight_tab === 'hard_order'}}"
                                     >
                                         <view class="span idx">{{idx + 1}}</view>
-                                        <view class="head-pic">
+                                        <view class="head-pic"
+                                              data-hero-id="{{easy.hero2.id}}"
+                                              bind:tap="detail">
                                             <image class="image" src="{{easy.hero2.avatar}}"/>
                                         </view>
                                         <view class="progress-box">
@@ -217,7 +239,9 @@
                                     </view>
                                 </view>
                             </view>
+                            <!--装备推荐-->
                             <view class="equipment-recommend">
+                                <!--出门装-->
                                 <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].itemoutjson.length}}">
                                     <view class="head">
                                         <view class="rec-text">出门装推荐</view>
@@ -244,6 +268,7 @@
                                         </view>
                                     </view>
                                 </view>
+                                <!--核心三件套-->
                                 <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].core3itemjson.length}}">
                                     <view class="head">
                                         <view class="rec-text">三件套推荐</view>
@@ -273,9 +298,12 @@
                                         </view>
                                     </view>
                                 </view>
-                                <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].shoesjson.length}}">
+                                <!---鞋子推荐-->
+                                <view class="equipment-cont box-equipment"
+                                      style="width: calc(50%);"
+                                      wx:if="{{overview.lane[currLane].shoesjson.length}}">
                                     <view class="head">
-                                        <view class="rec-text">鞋子推荐</view>
+                                        <view class="rec-text" style="width: 40%;">鞋子推荐</view>
                                         <view class="onstage-text">登场率</view>
                                         <view class="win-text">胜率</view>
                                     </view>
@@ -286,7 +314,7 @@
                                           wx:for-index="idx"
                                     >
                                         <view class="list-item" wx:if="{{idx < 2}}">
-                                            <view class="equipment-box">
+                                            <view class="equipment-box" style="width: 40%;">
                                                 <view class="equipment" bind:tap="onShowDialog" data-type="equipment" data-info="{{itemout.item}}">
                                                     <image src="{{itemout.item.iconPath}}" class="img"/>
                                                 </view>
@@ -296,10 +324,12 @@
                                         </view>
                                     </view>
                                 </view>
-                                <view class="equipment-cont box-equipment" wx:if="{{overview.lane[currLane].spellidjson.length}}">
+                                <!--召唤师-->
+                                <view class="equipment-cont box-equipment" style="width: calc(50%);"
+                                      wx:if="{{overview.lane[currLane].spellidjson.length}}">
                                     <view class="head">
-                                        <view class="rec-text">召唤师技能</view>
-                                        <view class="onstage-text">登场率</view>
+                                        <view class="rec-text" style="width: 55%;">召唤师技能</view>
+                                        <view class="onstage-text" style="width: auto;">登场率</view>
                                         <view class="win-text">胜率</view>
                                     </view>
                                     <view class="list"
@@ -309,7 +339,7 @@
                                           wx:for-index="idx"
                                     >
                                         <view class="list-item" wx:if="{{idx < 3}}">
-                                            <view class="equipment-box">
+                                            <view class="equipment-box" style="width: 55%;">
                                                 <view class="equipment" bind:tap="onShowDialog" data-type="summoners" data-info="{{itemout.item1}}">
                                                     <image src="{{itemout.item1.icon}}" class="img"/>
                                                 </view>
@@ -317,7 +347,7 @@
                                                     <image src="{{itemout.item2.icon}}" class="img"/>
                                                 </view>
                                             </view>
-                                            <view class="onstage-text">{{itemout.showrate / 100}}%</view>
+                                            <view class="onstage-text"  style="width: auto;">{{itemout.showrate / 100}}%</view>
                                             <view class="win-text">{{itemout.winrate / 100}}%</view>
                                         </view>
                                     </view>
@@ -463,7 +493,9 @@
                                         </view>
                                         <view class="hero-vs-icon"></view>
                                         <view class="blue">
-                                            <view class="img-box">
+                                            <view class="img-box"
+                                                  data-hero-id="{{vs.hero2.hero1_info.id}}"
+                                                  bind:tap="detail">
                                                 <t-image src="{{vs.hero2.avatar}}" class="img"/>
                                                 <view class="posi"><view class="{{currLaneIcon}}"></view></view>
                                             </view>
@@ -681,6 +713,7 @@
             </view>
         </view>
     </view>
+    <!--弹窗-->
     <l-mask show="{{is_show_dialog_mask}}" bind:lintap="changeMask" center="{{false}}">
         <view class="component-dialog active tooltip-follow"
               style="position: fixed; pointer-events: none;top: 30%;">

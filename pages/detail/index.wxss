@@ -112,13 +112,19 @@
     text-align: center;
 }
 
+.hero-type-list {
+    position: absolute;
+    display: flex;
+    top: 100rpx;
+}
+
 .hero-type {
-    display: inline-block;
     padding: 10rpx 10rpx;
     background-color: rgba(181, 151, 88, 0.5);
     color: #fcf0f4;
     font-size: 28rpx;
     margin: 20rpx 10rpx;
+    z-index: 99999;
 }
 
 .tft {
@@ -132,6 +138,7 @@
     text-align: right;
     right: 20rpx;
     z-index: 99999;
+    top: 100rpx;
 }
 
 .hero-details .info-list .item {
@@ -148,28 +155,6 @@
     display: inline-block;
     vertical-align: middle;
     flex-shrink: 0;
-}
-
-
-
-.hero-details .hero-show .info-list .item .bestdb {
-    margin-left: 4rpx;
-}
-
-.hero-details .info-list .item .bestdb .avatar {
-    display: inline-flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 60rpx;
-    height: 60rpx;
-    line-height: 60rpx;
-    border: 2rpx solid #303436;
-    background-color: #0b0814;
-    overflow: hidden;
-    border-radius: 50%;
-    margin-left: 10rpx;
-    cursor: pointer;
-    box-sizing: border-box;
 }
 
 .hero-details .info-list .item > view {
@@ -309,7 +294,7 @@
 .rune-recommend {
     margin-top: 20rpx;
     background-color: #161a20;
-    padding: 30rpx 30rpx 30rpx;
+    padding: 30rpx 30rpx 0 30rpx;
     box-sizing: border-box;
     margin-bottom: 20rpx;
 }
@@ -671,7 +656,7 @@
 }
 
 .spells-list .spells-content .description {
-    font-size: 30rpx;
+    font-size: 26rpx;
     color:  #fff5e0;
     margin-left: 20rpx;
     margin-top: 20rpx;
@@ -718,6 +703,7 @@
     cursor: pointer;
     transition: .3s;
      display: inline-block;
+     vertical-align: middle;
 }
 
 .history-list .item .img {
@@ -1124,9 +1110,8 @@
 .alignment-wrap .alignment-list .list-item .progress-box .span {
     position: absolute;
     line-height: 1.6;
-    font-size: 26rpx;
+    font-size: 24rpx;
     color: #111419;
-    font-family: dinot-bold;
     left: 20rpx;
     top: 0;
 }
@@ -1137,4 +1122,45 @@
     width: 300rpx;
     text-align: center;
     line-height: 2;
+}
+
+.bestdb {
+    margin-left: 30rpx;
+    height: 80rpx;
+    line-height: 180rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 40rpx;
+}
+
+.bestdb .span {
+    font-size: 26rpx;
+    color: #fff5e0;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.bestdb .item {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border: 2rpx solid #303436;
+    background-color: #0b0814;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: 20rpx;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.bestdb .image {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    object-fit: cover;
 }
