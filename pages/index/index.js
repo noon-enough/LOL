@@ -11,10 +11,13 @@ Page({
         },
         positions: LOL_CONFIG.hero_pos,
         page : 1,
+        totalPage: 1,
         size : 30,
-        lane: "mid",
+        lane: "all",
+        highlight: 0,
         list: app.globalData.tabbar,
         ranking: [],
+        isDone: false,
         backupData: [],
         tableHeader: [
             {
@@ -52,19 +55,44 @@ Page({
         outBorder: false,
         msg: '暂无数据'
     },
-    onLoad: function (options) {
-        console.log('list', this.data.list)
+    onShow: function(options) {
+        let that = this,
+            selectPos = app.globalData.index.lane,
+            lane = that.data.lane,
+            currHighlight = that.data.highlight,
+            highlight = app.globalData.index.highlight
 
+        if (lane !== selectPos) {
+            console.log('onShow', app.globalData, highlight)
+            that.setData({
+                lane: selectPos,
+                highlight: highlight
+            })
+            that.getRanking()
+        }
+    },
+    onLoad: function (options) {
         let that = this
+        wx.showLoading()
         that.setData({
             page: 1,
+            lane: app.globalData.index.lane,
+            highlight: app.globalData.index.highlight
         })
         that.getRanking()
     },
     getRanking() {
-        let that = this
+        let that = this,
+            lane = that.data.lane,
+            page = that.data.page,
+            isDone = that.data.isDone,
+            size = that.data.size
 
-        getRanking(that.data.lane, that.data.page, that.data.size).then(res => {
+        if (isDone === true) {
+            return
+        }
+
+        getRanking(lane, page, size).then(res => {
             console.log('getranking', res)
             let code = res.code ?? 200,
                 data = res.data,
@@ -83,11 +111,18 @@ Page({
                 item.hero.positions = getPositions(item.hero.positions)
                 return item
             })
+
+            if (page > 1) {
+                data = that.data.ranking.concat(data)
+            }
+
             that.setData({
                 ranking: data,
                 backupData: data,
                 isRefresh: false,
+                totalPage: res.extra.totalPage ?? 1,
             })
+            wx.hideLoading()
         })
     },
     onPullDownRefresh() {
@@ -96,6 +131,7 @@ Page({
             page: 1,
             isDone: false,
             isRefresh: true,
+            highlight: 0,
         })
         that.getRanking()
     },
@@ -106,8 +142,9 @@ Page({
 
         that.setData({
             lane: type,
+            highlight: 0,
         })
-
+        wx.showLoading()
         that.getRanking()
     },
     onShareAppMessage(options) {
@@ -157,5 +194,30 @@ Page({
         that.setData({
             ranking: data,
         })
-    }
+    },
+    onScrollToBottom(e) {
+        let that = this
+        that.onReachBottom()
+    },
+    onReachBottom() {
+        const
+            that = this,
+            totalPage = that.data.totalPage,
+            page = that.data.page,
+            isDone = that.data.isDone
+
+        const nextPage = page + 1
+        console.log('onReachBottom', nextPage, 'isDone', isDone)
+        if (nextPage > totalPage) {
+            that.setData({
+                isDone: true,
+            })
+            return
+        }
+        that.setData({
+            isDone: false,
+            page: nextPage,
+        })
+        that.getRanking()
+    },
 });

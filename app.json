@@ -5,7 +5,8 @@
     "pages/heroes/index",
     "pages/arena/index",
     "pages/equipment/index",
-    "pages/detail/index"
+    "pages/detail/index",
+    "pages/database/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -24,7 +25,8 @@
     "l-mask": "/miniprogram_npm/lin-ui/mask/index",
     "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
 
-    "lol-dialog": "/components/dialog/index"
+    "lol-dialog": "/components/dialog/index",
+    "t-loading": "/miniprogram_npm/tdesign-miniprogram/loading/loading"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
@@ -66,8 +68,5 @@
         "selectedIconPath":"/assets/tabbar/fight-selected.png"
       }
     ]
-  },
-  "navigateToMiniProgramAppIdList": [
-    "wx3adcaf55195f1cfa"
-  ]
+  }
 }

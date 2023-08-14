@@ -8,11 +8,11 @@ import {get} from './http'
  * @returns {Promise<SuccessParam<wx.RequestOption>>}
  */
 function getRanking(lane, page = 1, size = 30) {
-    return get(`/lol/ranking?lane=${lane}&page=${page}&size=${size}`)
+    return get(`/lol/ranking?lane=${lane}&page=${page}&size=${size}&is_new=1`)
 }
 
-function getHero(pos = "all", job = "all") {
-    return get(`/lol/champions?pos=${pos}&job=${job}`)
+function getHero(pos = "all", job = "all", page = 1, size = 30) {
+    return get(`/lol/champions?pos=${pos}&job=${job}&page=${page}&size=${size}&is_new=1`)
 }
 
 function getHeroDetail(id = 0) {
@@ -23,8 +23,8 @@ function getHeroOverview(id = 0) {
     return get(`/lol/champions/${id}/detail`)
 }
 
-function getFight(job = "all") {
-    return get(`/lol/fight?job=${job}`)
+function getFight(job = "all", page = 1, size = 30) {
+    return get(`/lol/fight?job=${job}&is_new=1&size=${size}&page=${page}`)
 }
 
 function getArena(job = "all") {

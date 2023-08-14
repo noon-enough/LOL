@@ -28,7 +28,7 @@
         wx:key="i"
         wx:for-index="idx"
       >
-        <view class="tbody-tr {{ stripe ? 'tbody-tr-stripe' : '' }} {{ border ? 'tbody-tr-border' : ''}} row-class-name">
+        <view class="tbody-tr {{ stripe ? 'tbody-tr-stripe' : '' }} {{ border ? 'tbody-tr-border' : ''}} row-class-name {{highlight === it[primary] ? 'selected-active' : ''}}">
           <view wx:for-item="head"
             wx:for="{{ headers }}"
             wx:key="j"

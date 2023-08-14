@@ -30,6 +30,10 @@ App({
         heroes: {
             job: "all",
             pos: "all"
+        },
+        index: {
+            lane: "all",
+            highlight: 0,
         }
     },
 })

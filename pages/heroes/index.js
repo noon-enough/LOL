@@ -15,6 +15,10 @@ Page({
         selectPos: "",
         selectJob: "",
         heroes: [],
+        totalPage: 1,
+        isDone: false,
+        page: 1,
+        size: 30,
     },
     onShow: function(options) {
         let that = this,
@@ -36,7 +40,6 @@ Page({
             selectPos = app.globalData.heroes.pos,
             selectJob = app.globalData.heroes.job
         wx.showLoading()
-        console.log('onLoad', selectPos, selectJob)
         that.setData({
             selectPos: selectPos,
             selectJob: selectJob
@@ -46,9 +49,16 @@ Page({
     getHero() {
         let that = this,
             pos = that.data.selectPos,
-            job = that.data.selectJob
+            job = that.data.selectJob,
+            page = that.data.page,
+            size = that.data.size,
+            isDone = that.data.isDone
 
-        getHero(pos, job).then(res => {
+        if (isDone === true) {
+            return
+        }
+
+        getHero(pos, job, page, size).then(res => {
             console.log('data', res)
             let code = res.code ?? 200,
                 data = res.data ?? [],
@@ -81,10 +91,15 @@ Page({
                 return item
             })
 
+            if (page > 1) {
+                data = that.data.heroes.concat(data)
+            }
+
             that.setData({
                 heroes: data,
                 isRefresh: false,
                 backupData: data,
+                totalPage: res.extra.totalPage ?? 1,
             })
             wx.hideLoading()
         })
@@ -104,6 +119,7 @@ Page({
                 selectJob: type,
             }
         }
+        wx.showLoading()
         that.setData(data)
         // 每次我都需要重新获取数据？
         that.getHero()
@@ -121,6 +137,7 @@ Page({
             isDone: false,
             isRefresh: true,
         })
+        wx.showLoading()
         that.getHero()
     },
     onScroll(e) {},
@@ -171,5 +188,30 @@ Page({
             title: `【国服英雄资料库】英雄联盟LOL开黑上分助手，国服玩家都在用的上分小程序`,
             path: `/pages/heroes/index`,
         }
+    },
+    onScrollToBottom(e) {
+        let that = this
+        that.onReachBottom()
+    },
+    onReachBottom() {
+        const
+            that = this,
+            totalPage = that.data.totalPage,
+            page = that.data.page,
+            isDone = that.data.isDone
+
+        const nextPage = page + 1
+        console.log('onReachBottom', nextPage, 'isDone', isDone)
+        if (nextPage > totalPage) {
+            that.setData({
+                isDone: true,
+            })
+            return
+        }
+        that.setData({
+            isDone: false,
+            page: nextPage,
+        })
+        that.getHero()
     },
 });

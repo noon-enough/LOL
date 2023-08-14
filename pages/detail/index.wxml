@@ -96,7 +96,10 @@
                             </view>
                             <view class="data-txt">胜率</view>
                         </view>
-                        <view class="data-item">
+                        <view class="data-item"
+                              bind:tap="onGotoRanking"
+                              data-hero-id="{{info.id}}"
+                              data-lane="{{currLane}}">
                             <view class="data-num strength">
                                 {{info.record_data[currLane].champlanorder}}
                             </view>

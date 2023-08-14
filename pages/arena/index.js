@@ -82,8 +82,8 @@ Page({
                 arena: data,
                 isRefresh: false,
             })
+            wx.hideLoading()
         })
-        wx.hideLoading()
     },
     onPullDownRefresh() {
         let that = this
@@ -91,6 +91,7 @@ Page({
             isDone: false,
             isRefresh: true,
         })
+        wx.showLoading()
         that.getArena()
     },
     onScroll(e) {},
@@ -101,7 +102,7 @@ Page({
         that.setData({
             curJob: type,
         })
-
+        wx.showLoading()
         that.getArena()
     },
     onShareAppMessage(options) {

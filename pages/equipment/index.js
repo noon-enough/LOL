@@ -44,8 +44,8 @@ Page({
                 backupData: data,
                 isRefresh: false,
             })
+            wx.hideLoading()
         })
-        wx.hideLoading()
     },
     onSelect(e) {
         let that = this,
@@ -62,6 +62,7 @@ Page({
                 selectModel: type,
             }
         }
+        wx.showLoading()
         that.setData(data)
         that.getEquipment()
     },
@@ -71,6 +72,7 @@ Page({
             isDone: false,
             isRefresh: true,
         })
+        wx.showLoading()
         that.getEquipment()
     },
     onScroll(e) {},

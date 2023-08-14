@@ -9,10 +9,14 @@ Page({
         loadingProps: {
             size: '50rpx',
         },
+        isDone: false,
+        size: 30,
+        page: 1,
         jobs: LOL_CONFIG.hero_job,
         list: app.globalData.tabbar,
         curJob: 'all',
         fight: [],
+        totalPage: 1,
         backupData: [],
         tableHeader: [
             {
@@ -63,9 +67,16 @@ Page({
     },
     getFight() {
         let that = this,
-            job = that.data.curJob
+            job = that.data.curJob,
+            page = that.data.page,
+            size = that.data.size,
+            isDone = that.data.isDone
 
-        getFight(job).then(res => {
+        if (isDone === true) {
+            return
+        }
+
+        getFight(job, page, size).then(res => {
             console.log('getFight', res)
             let code = res.code ?? 200,
                 data = res.data,
@@ -97,13 +108,19 @@ Page({
                 }
                 return item
             })
+
+            if (page > 1) {
+                data = that.data.fight.concat(data)
+            }
+
             that.setData({
                 fight: data,
                 backupData: data,
                 isRefresh: false,
+                totalPage: res.extra.totalPage ?? 1,
             })
+            wx.hideLoading()
         })
-        wx.hideLoading()
     },
     onPullDownRefresh() {
         let that = this
@@ -122,6 +139,7 @@ Page({
             curJob: type,
         })
 
+        wx.showLoading()
         that.getFight()
     },
     onRowClick(e) {
@@ -174,5 +192,31 @@ Page({
             title: `【大乱斗国服英雄排行】英雄联盟LOL开黑上分助手，国服玩家都在用的上分小程序`,
             path: `/pages/fight/index`,
         }
+    },
+    onScrollToBottom(e) {
+        let that = this
+        wx.showLoading()
+        that.onReachBottom()
+    },
+    onReachBottom() {
+        const
+            that = this,
+            totalPage = that.data.totalPage,
+            page = that.data.page,
+            isDone = that.data.isDone
+
+        const nextPage = page + 1
+        console.log('onReachBottom', nextPage, 'isDone', isDone)
+        if (nextPage > totalPage) {
+            that.setData({
+                isDone: true,
+            })
+            return
+        }
+        that.setData({
+            isDone: false,
+            page: nextPage,
+        })
+        that.getFight()
     },
 });

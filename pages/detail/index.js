@@ -372,5 +372,19 @@ Page({
         wx.switchTab({
             url: `/pages/heroes/index`
         })
+    },
+    onGotoRanking(e) {
+        let that = this,
+            lane = e.currentTarget.dataset.lane,
+            id = e.currentTarget.dataset.heroId
+
+        app.globalData.index = {
+            lane: lane,
+            highlight: id,
+        }
+
+        wx.switchTab({
+            url: `/pages/index/index`
+        })
     }
 });

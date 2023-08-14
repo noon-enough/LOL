@@ -58,6 +58,14 @@ Component({
     msg: {
       type: String,
       value: '暂无数据~'
+    },
+    highlight: {
+      type: Number,
+      value: -1,
+    },
+    primary: {
+      type: String,
+      value: "id",
     }
   },
 
