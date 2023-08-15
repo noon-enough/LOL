@@ -156,3 +156,13 @@
   font-size: 26rpx;
   color: grey;
 }
+
+.arena-banrate {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+  height: 140rpx;
+  align-content: space-between;
+}

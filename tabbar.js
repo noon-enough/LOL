@@ -18,15 +18,15 @@ export default [
         selectedIconPath:"/assets/tabbar/arena-selected.png"
     },
     {
-        pagePath:"/pages/heroes/index",
-        text:"英雄",
-        iconPath:"/assets/tabbar/hero.png",
-        selectedIconPath:"/assets/tabbar/hero-selected.png"
+        pagePath:"/pages/database/index",
+        text:"资料库",
+        iconPath:"/assets/tabbar/databases.png",
+        selectedIconPath:"/assets/tabbar/databases-selected.png"
     },
     {
-        pagePath:"/pages/equipment/index",
-        text:"装备",
-        iconPath:"/assets/tabbar/equipment.png",
-        selectedIconPath:"/assets/tabbar/equipment-selected.png"
+        pagePath:"/pages/settings/index",
+        text:"设置",
+        iconPath:"/assets/tabbar/option.png",
+        selectedIconPath:"/assets/tabbar/option-selected.png"
     }
 ]

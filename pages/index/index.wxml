@@ -32,6 +32,7 @@
     </view>
     <view class="container" style="margin-bottom: 200rpx;">
         <table
+                isShowNickname="{{is_show_nickname}}"
                 highlight="{{highlight}}"
                 primary="hero_id"
                 headers="{{tableHeader}}"

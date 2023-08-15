@@ -1,0 +1,293 @@
+.component-switch-filter, .component-switch-filter2 {
+    display: inline-block;
+    vertical-align: middle;
+    background-color: transparent;
+    border: none;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    margin-left: 20rpx;
+}
+
+.component-switch-filter2 view.active,
+.component-switch-filter view.active {
+    color: #b59758;
+    border: 2rpx solid #b59758;
+    z-index: 2;
+}
+
+.component-switch-filter2 view, .component-switch-filter view {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 20rpx;
+    height: 60rpx;
+    font-size: 28rpx;
+    background: #191d24;
+    border: 2rpx solid #313537;
+    margin-right: -2rpx;
+    color: #5e625a;
+    box-sizing: border-box;
+    line-height: 2;
+}
+
+
+.champion-list {
+    /*width: 100%;*/
+    margin: 10rpx;
+}
+
+.champion-list .search {
+    margin-bottom: 10rpx;
+    margin-top: 10rpx;
+}
+
+.champion-list .champion-item-big {
+    display: inline-block;
+    vertical-align: middle;
+    width: 46%;
+    border: 1px solid #1a1f26;
+    margin: 0rpx 10rpx 10rpx 10rpx;
+    cursor: pointer;
+    -webkit-transition: border-color .3s;
+    -moz-transition: border-color .3s;
+    -o-transition: border-color .3s;
+    transition: border-color .3s;
+}
+
+.champion-list .champion-item-big {
+    border-color: rgba(44,24,78,.2);
+    -webkit-transition: border-color .3s,box-shadow .3s;
+    -moz-transition: border-color .3s,box-shadow .3s;
+    -o-transition: border-color .3s,box-shadow .3s;
+    transition: border-color .3s,box-shadow .3s;
+}
+
+.champion-list .champion-item-big .champion-item-pic {
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 380rpx;
+    position: relative;
+    overflow: hidden;
+}
+
+.champion-list .champion-item-big .champion-item-pic:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*background-image: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,0),rgba(0,0,0,.3));*/
+    width: 100%;
+    height: 100%;
+}
+
+.champion-list .champion-item-big .champion-item-pic .blur-img {
+    position: absolute;
+    top: 0;
+    left: -.5rem;
+    width: 50%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: blur(.2rem);
+    -moz-filter: blur(.2rem);
+    -ms-filter: blur(.2rem);
+    filter: blur(20px);
+    opacity: .8;
+}
+
+.champion-list .champion-item-big .champion-item-pic  .update-info {
+
+}
+
+.champion-list .champion-item-big .champion-item-pic  .update-info .status {
+    background-color: white;
+    width: 60rpx;
+    margin-left: 10rpx;
+    text-align: center;
+}
+
+.champion-list .champion-item-big .champion-item-pic  .update-info .status.plus {
+    color: #ff1700;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.champion-list .champion-item-big .champion-item-pic  .update-info .status.minus {
+    color: #3da742;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.champion-list .champion-item-big .champion-item-pic .race-job-wrap {
+    position: absolute;
+    bottom: 10rpx;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.champion-list .champion-item-big .champion-item-pic .race-job {
+    position: relative;
+    margin: .05rem 0;
+    padding-left: .2rem;
+}
+
+.champion-list .champion-item-big .champion-item-pic .race-job-icon {
+    position: relative;
+    background: rgba(27,33,40,.4);
+    border-radius: 50%;
+    width: 40rpx;
+    height: 40rpx;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.champion-list .champion-item-big .champion-item-pic .race-job-icon .icon-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    width: 30rpx;
+    background: none;
+    height: 30rpx;
+    -webkit-filter: contrast(.1) brightness(10);
+    filter: contrast(.1) brightness(10);
+}
+
+.champion-list .champion-item-big .champion-item-pic .race-job-name {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff5e0;
+    font-size: 26rpx;
+    margin-left: 10rpx;
+}
+
+.champion-list .champion-item-big .champion-item-info {
+    background: #111419;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 26rpx;
+    padding: 0 10rpx;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
+
+.champion-list .champion-item-big .champion-item-info .name {
+    display: flex;
+    color: #fcf0f4;
+    text-align: center;
+}
+
+
+.champion-list .champion-item-big .champion-item-info .price {
+    float: right;
+    color: #b59758;
+}
+
+.champion-list .champion-item-big:last-child {
+}
+
+
+
+.hero-position {
+    position: absolute;
+    top: 10rpx;
+}
+
+.hero-position .span {
+    display: inline-block;
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 10rpx;
+    background-color: rgba(0,9,19,.6);
+}
+
+.hero-position .span view {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+
+
+/* 使用 rpx 替换原来的 rem 单位 */
+.equipment-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    margin: 16rpx 20rpx 200rpx;
+}
+
+.equipment-list .list-item {
+    width: 220rpx;
+    height: auto;
+    margin-right: 16rpx;
+    margin-bottom: 16rpx;
+    position: relative;
+}
+
+.equipment-list .list-item .equipment-item {
+    width: 100%;
+    height: 100%;
+    background-color: #111419;
+    padding-top: 16rpx;
+    border: 1px solid #313e4c;
+    transition: all linear .2s;
+    box-sizing: border-box;
+}
+
+.equipment-list .list-item .equipment-item .prop-box {
+    width: 100rpx;
+    height: 100rpx;
+    background-color: #010101;
+    margin: 0 auto 16rpx;
+    position: relative;
+}
+
+.equipment-list .list-item .equipment-item .prop-box .img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.equipment-list .list-item .equipment-item .prop-name {
+    line-height: 1.2;
+    font-size: 28rpx;
+    text-align: center;
+    color: #fff5e0;
+}
+
+.equipment-list .list-item .equipment-item .price {
+    text-align: center;
+    line-height: 1;
+    margin-top: 10rpx;
+    margin-bottom: 10rpx;
+}
+
+.equipment-list .list-item .equipment-item .price .span {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: dinot-bold;
+    font-size: 24rpx;
+    color: #b59758;
+}

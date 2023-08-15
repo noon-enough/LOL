@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "设置",
+  "usingComponents": {
+    "t-cell": "/miniprogram_npm/tdesign-miniprogram/cell/cell",
+    "t-switch": "/miniprogram_npm/tdesign-miniprogram/switch/switch"
+  }
+}

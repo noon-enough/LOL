@@ -63,7 +63,7 @@
                               l-class="champion-pic"
                               src="{{it.hero.avatar}}"/>
                       <view class="name">
-                          <view class="nickname">{{it.hero.nickname ? it.hero.nickname : it.hero.title}}</view>
+                          <view class="nickname">{{isShowNickname ? it.hero.nickname : it.hero.title}}</view>
                           <view class="pos">
                               {{it.hero.roles}}
                           </view>

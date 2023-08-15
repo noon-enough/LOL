@@ -33,6 +33,7 @@
     </view>
     <view class="container" style="margin-bottom: 200rpx;">
         <table-fight
+                isShowNickname="{{is_show_nickname}}"
                 bind:rowClick="onRowClick"
                 headers="{{tableHeader}}"
                 data="{{ fight }}"

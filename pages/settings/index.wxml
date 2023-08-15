@@ -1,0 +1,15 @@
+<l-tab-bar
+        bg-color="#191e25"
+        text-color="#8a8a8a"
+        text-selected-color="#d7a75f"
+        list="{{list}}"
+/>
+<view class="container" style="margin-bottom: 200rpx;">
+    <t-cell title="显示英雄别名" description="英雄别名（昵称）一般来自网友取名" hover>
+        <t-switch value="{{nickname}}" bind:change="onSwitch" data-type="nickname" slot="note" />
+    </t-cell>
+    <t-cell title="打开金铲铲/云顶跳转功能" description="金铲铲/云顶助手让你吃鸡不再难" hover>
+        <t-switch value="{{tft}}" bind:change="onSwitch" data-type="tft" slot="note" />
+    </t-cell>
+    <t-cell title="给我评分" description="LOL开黑上分助手需要你的助力评分" hover arrow bind:click="onCommentPlugin" />
+</view>

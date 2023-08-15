@@ -31,7 +31,7 @@
           data-name="{{info.tft_info.name}}"
           data-session="{{info.tft_info.session}}"
           bind:tap="onOpenTFTMiniProc"
-          wx:if="{{info.tft_info.id}}">在云顶/金铲铲中查看</view>
+          wx:if="{{info.tft_info.id && is_show_tft}}">在云顶/金铲铲中查看</view>
     <view class="detail-main" style="top: {{navigationBarHeight - capsuleBarHeight - 100}}rpx">
         <view class="champion-detail-info">
             <view class="detail-info-1" style="background: transparent;top: -90rpx;">
@@ -44,14 +44,14 @@
                     <view class="champion-price">{{data.prices}}</view>
                 </view>
                 <view class="champion-name">
-                    <view wx:if="{{data.synergies === 1}}" class="status plus">
+                    <view wx:if="{{info.synergies === 1}}" class="status plus">
                         增强
                     </view>
-                    <view wx:elif="{{data.synergies === -1}}" class="status minus">
+                    <view wx:elif="{{info.synergies === -1}}" class="status minus">
                         削弱
                     </view>
                     {{info.title}} {{info.name}}
-                    <block wx:if="{{info.nickname}}">({{info.nickname}})</block>
+                    <block wx:if="{{is_show_nickname}}">({{info.nickname}})</block>
                 </view>
                 <view class="component-switch-filter">
                     <view wx:for="{{info.positions}}"
@@ -383,7 +383,9 @@
                                             </view>
                                         </view>
                                         <view class="description">
-                                            <text>{{skill[selectKey].description}}</text>
+                                            <text
+                                                    decode="{{true}}"
+                                                    user-select="{{true}}">{{skill[selectKey].description}}</text>
                                         </view>
                                     </view>
                                 </view>

@@ -1,0 +1,10 @@
+page {
+    --td-cell-bg-color: #191e25;
+    --td-cell-hover-color: #191e25;
+    --td-cell-title-color: #fcf0f4;
+    --td-cell-description-color: #8a8a8a;
+    --td-cell-right-icon-color: #fcf0f4;
+
+    --td-switch-checked-color: #d7a75f;
+    --td-switch-unchecked-color: #8a8a8a;
+}

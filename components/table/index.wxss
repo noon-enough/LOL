@@ -118,14 +118,13 @@
   color: #fcf0f4;
 }
 
-
 .champion {
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-content: center;
   justify-items: center;
-  align-items: start;
+  align-items: center;
 }
 
 .champion .name {

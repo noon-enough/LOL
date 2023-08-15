@@ -24,6 +24,7 @@
     </view>
     <view class="container" style="margin-bottom: 200rpx;">
         <table-arena
+                isShowNickname="{{is_show_nickname}}"
                 headers="{{tableHeader}}"
                 data="{{ arena }}"
                 stripe="{{ stripe }}"

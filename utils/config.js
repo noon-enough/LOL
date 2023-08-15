@@ -1,4 +1,5 @@
-
+const NICKNAME = "__LOL_NICKNAME__"
+const TFT = "__LOL_TFT__"
 const API_DOMAIN = "https://tft.qizue.com"
 const LOL_CONFIG = {
     hero_job:[
@@ -24,4 +25,4 @@ const LOL_CONFIG = {
     ],
     mode_list: ['召唤师峡谷', '斗魂竞技场'],
 }
-module.exports = {API_DOMAIN, LOL_CONFIG}
+module.exports = {API_DOMAIN, LOL_CONFIG, NICKNAME, TFT}

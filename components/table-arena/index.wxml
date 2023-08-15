@@ -56,7 +56,7 @@
                               l-class="champion-pic"
                               src="{{it.hero1.avatar}}"/>
                       <view class="name">
-                          <view class="nickname">{{it.hero1.nickname ? it.hero1.nickname : it.hero1.title}}</view>
+                          <view class="nickname">{{isShowNickname ? it.hero1.nickname : it.hero1.title}}</view>
                           <view class="pos">
                               {{it.hero1.roles}}
                           </view>
@@ -71,7 +71,7 @@
                               l-class="champion-pic"
                               src="{{it.hero2.avatar}}"/>
                       <view class="name">
-                          <view class="nickname">{{it.hero2.nickname ? it.hero2.nickname : it.hero2.title}}</view>
+                          <view class="nickname">{{isShowNickname ? it.hero2.nickname : it.hero2.title}}</view>
                           <view class="pos">
                               {{it.hero2.roles}}
                           </view>
@@ -79,11 +79,13 @@
                   </view>
               </block>
               <block wx:elif="{{head['prop'] === 'banrate'}}">
-                  <view class="">
-                      {{it.banrate1}}
-                  </view>
-                  <view class="">
-                      {{it.banrate2}}
+                  <view class="arena-banrate">
+                      <view class="">
+                          {{it.banrate1}}
+                      </view>
+                      <view class="">
+                          {{it.banrate2}}
+                      </view>
                   </view>
               </block>
               <block wx:else>

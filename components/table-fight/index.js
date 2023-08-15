@@ -1,4 +1,5 @@
 import {heroDetail} from "../../utils/util";
+import boolean from "../../miniprogram_npm/lin-ui/common/async-validator/validator/boolean";
 
 Component({
   /**
@@ -18,6 +19,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    isShowNickname: {
+      type: boolean,
+      value: false,
+    },
     data: {
       type: Array,
       value: []

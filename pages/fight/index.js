@@ -1,10 +1,11 @@
-import {LOL_CONFIG} from "../../utils/config";
+import {LOL_CONFIG, NICKNAME} from "../../utils/config";
 import {getFight} from "../../utils/api";
-import {getJobs, getPositions, showToast} from "../../utils/util";
+import {getIsShowNickname, getJobs, getPositions, showToast} from "../../utils/util";
 
 const app= getApp()
 Page({
     data: {
+        is_show_nickname: false,
         isRefresh: false,
         loadingProps: {
             size: '50rpx',
@@ -60,6 +61,14 @@ Page({
         outBorder: false,
         msg: '暂无数据'
     },
+    onShow() {
+        let that = this,
+            is_show_nickname = getIsShowNickname()
+        console.log('onshow', 'is_show_nickname', is_show_nickname)
+        that.setData({
+            is_show_nickname: is_show_nickname,
+        })
+    },
     onLoad: function (options) {
         let that = this
         wx.showLoading()
@@ -73,6 +82,7 @@ Page({
             isDone = that.data.isDone
 
         if (isDone === true) {
+            wx.hideLoading()
             return
         }
 
@@ -128,6 +138,7 @@ Page({
             isDone: false,
             isRefresh: true,
         })
+        wx.showLoading()
         that.getFight()
     },
     onScroll(e) {},
@@ -211,6 +222,7 @@ Page({
             that.setData({
                 isDone: true,
             })
+            wx.hideLoading()
             return
         }
         that.setData({

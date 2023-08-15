@@ -1,6 +1,6 @@
 import {getRanking} from "../../utils/api";
-import {getPositions, showToast} from "../../utils/util";
-import {LOL_CONFIG} from "../../utils/config";
+import {getIsShowNickname, getPositions, showToast} from "../../utils/util";
+import {LOL_CONFIG, NICKNAME} from "../../utils/config";
 
 const app= getApp()
 Page({
@@ -53,7 +53,8 @@ Page({
         stripe: false,
         border: false,
         outBorder: false,
-        msg: '暂无数据'
+        msg: '暂无数据',
+        is_show_nickname: false,
     },
     onShow: function(options) {
         let that = this,
@@ -70,6 +71,12 @@ Page({
             })
             that.getRanking()
         }
+
+        let is_show_nickname = getIsShowNickname()
+        console.log('onshow', 'is_show_nickname', is_show_nickname)
+        that.setData({
+            is_show_nickname: is_show_nickname,
+        })
     },
     onLoad: function (options) {
         let that = this
@@ -89,6 +96,7 @@ Page({
             size = that.data.size
 
         if (isDone === true) {
+            wx.hideLoading()
             return
         }
 
@@ -212,6 +220,7 @@ Page({
             that.setData({
                 isDone: true,
             })
+            wx.hideLoading()
             return
         }
         that.setData({

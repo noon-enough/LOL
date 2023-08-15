@@ -1,4 +1,4 @@
-import {DEFAULT_SESSION, FEEDBACK_APPID, LOL_CONFIG, OBJECT, SESSION, SESSION_SET} from "./config";
+import {DEFAULT_SESSION, FEEDBACK_APPID, LOL_CONFIG, NICKNAME, OBJECT, SESSION, SESSION_SET, TFT} from "./config";
 
 /**
  * 跳转
@@ -88,9 +88,31 @@ function getIconByType(type) {
     return item ? item.icon : null;
 }
 
+function getIsShowNickname() {
+    let is_show_nickname = wx.getStorageSync(NICKNAME)
+    // 默认应该返回 true
+    if (is_show_nickname) {
+        is_show_nickname = !!is_show_nickname
+    } else {
+        is_show_nickname = true
+    }
+    return is_show_nickname
+}
+
+function getIsShowTFT() {
+    let is_show_tft = wx.getStorageSync(TFT)
+    if (is_show_tft) {
+        is_show_tft = !!is_show_tft
+    } else {
+        is_show_tft = true
+    }
+
+    return is_show_tft
+}
+
 /**
  *
  * @type {{goto: goto, heroDetail: heroDetail, getSessionName: (function(string=): string), showToast: showToast, getSession: (function(*): string), gotoFeedback: gotoFeedback, getSessionFromStorage: (function(): *), lineupDetail: lineupDetail}}
  */
 module.exports = {historyBack, goto, heroDetail, gotoFeedback,
-    showToast, getPositions, getNameByType, getJobs, getIconByType}
+    showToast, getPositions, getNameByType, getJobs, getIconByType, getIsShowNickname, getIsShowTFT}

@@ -1,6 +1,14 @@
 import {get1V1, getHeroDetail, getHeroOverview, getHeroSkill} from "../../utils/api";
-import {getIconByType, getNameByType, heroDetail, historyBack, showToast} from "../../utils/util";
-import {LOL_CONFIG} from "../../utils/config";
+import {
+    getIconByType,
+    getIsShowNickname,
+    getIsShowTFT,
+    getNameByType,
+    heroDetail,
+    historyBack,
+    showToast
+} from "../../utils/util";
+import {LOL_CONFIG, NICKNAME, TFT} from "../../utils/config";
 
 const app = getApp()
 Page({
@@ -26,6 +34,19 @@ Page({
         easy_order: [],
         hard_order: [],
         fight_tab: "easy_order",
+        is_show_nickname: false,
+        is_show_tft: false,
+    },
+    onShow() {
+        let that = this,
+            is_show_nickname = getIsShowNickname(),
+            is_show_tft = getIsShowTFT()
+
+        console.log('onshow', 'is_show_nickname', is_show_nickname, 'is_show_tft', is_show_tft)
+        that.setData({
+            is_show_nickname: is_show_nickname,
+            is_show_tft: is_show_tft,
+        })
     },
     onLoad: function (options) {
         let that = this,

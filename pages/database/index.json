@@ -1,4 +1,6 @@
 {
+  "navigationBarTitleText": "资料库",
   "usingComponents": {
+    "dialog": "/miniprogram_npm/tdesign-miniprogram/dialog/dialog"
   }
 }

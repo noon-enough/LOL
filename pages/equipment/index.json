@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "装备数据",
-  "usingComponents": {
-    "dialog": "/miniprogram_npm/tdesign-miniprogram/dialog/dialog"
-  }
-}

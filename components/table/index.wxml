@@ -55,13 +55,12 @@
                   <view class="champion">
                       <l-avatar
                               bind:tap="detail"
-                              data-hero-session="{{session}}"
                               data-hero-id="{{it.hero_id}}"
                               size="80"
                               l-class="champion-pic"
                               src="{{it.hero.avatar}}"/>
                       <view class="name">
-                          <view class="nickname">{{it.hero.nickname ? it.hero.nickname : it.hero.title}}</view>
+                          <view class="nickname">{{isShowNickname ? it.hero.nickname : it.hero.title}}</view>
                           <view class="pos">
                               {{it.hero.positions}}
                           </view>
