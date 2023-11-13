@@ -28,20 +28,22 @@ Page({
             },
             {
                 prop: 'hero',
-                width: 348,
+                width: 300,
                 label: '英雄',
             },
             {
                 prop: 'win',
-                width: 100,
+                width: 120,
                 label: '胜率',
-                color: '#fcf0f4'
+                color: '#fcf0f4',
+                orderby: true,
             },
             {
                 prop: 'show',
-                width: 100,
+                width: 120,
                 label: '登场率',
-                color: '#fcf0f4'
+                color: '#fcf0f4',
+                orderby: true,
             },
             {
                 prop: 'level',
@@ -124,9 +126,19 @@ Page({
                 data = that.data.ranking.concat(data)
             }
 
+            const uniqueData = [];
+            const heroIdSet = new Set();
+
+            data.forEach(item => {
+                if (!heroIdSet.has(item.hero_id)) {
+                    heroIdSet.add(item.hero_id);
+                    uniqueData.push(item);
+                }
+            });
+
             that.setData({
-                ranking: data,
-                backupData: data,
+                ranking: uniqueData,
+                backupData: uniqueData,
                 isRefresh: false,
                 totalPage: res.extra.totalPage ?? 1,
             })
@@ -151,6 +163,8 @@ Page({
         that.setData({
             lane: type,
             highlight: 0,
+            page: 1,
+            isDone: false,
         })
         wx.showLoading()
         that.getRanking()

@@ -8,10 +8,14 @@
         wx:for="{{ headers }}"
         wx:key="i"
         wx:for-item="item"
-        class="td"
-        style="width:{{ item.width }}rpx; {{ border ? '' : 'border-right: unset;'}}"
+        class="td sorter"
+        style="width:{{ item.width }}rpx; {{ border ? '' : 'border-right: unset;'}} display: flex;"
       >
-      {{ item.label }}
+          <view class="sorter-txt active">{{ item.label }}</view>
+          <view class="sorter-arrow" wx:if="{{item.orderby === true}}">
+              <image src="/assets/icon/up_active.png" mode="widthFix" class="icon"></image>
+              <image src="/assets/icon/down.png" mode="widthFix" class="icon"></image>
+          </view>
       </view>
     </view>
     <!-- 表格头 end -->

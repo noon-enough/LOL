@@ -4,23 +4,23 @@
         text-selected-color="#d7a75f"
         list="{{list}}"
 />
-<l-tabs hasLine="{{false}}"
-        active-color="#b59758"
-        inactive-color="#959db9"
-        bind:linchange="onTabTabBar"
-        active-key="{{activeKey}}"
-        l-inactive-class="tab-inactive-item"
-        l-active-class="tab-active-item">
-    <l-tabpanel tab="英雄" key="hero" slot="hero">
-        <t-pull-down-refresh
-                value="{{isRefresh}}"
-                loadingProps="{{loadingProps}}"
-                loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
-                bind:refresh="onPullDownRefresh"
-                bind:scroll="onScroll"
-                bind:scrolltolower="onScrollToBottom"
-                using-custom-navbar="{{true}}"
-        >
+<t-pull-down-refresh
+        value="{{isRefresh}}"
+        loadingProps="{{loadingProps}}"
+        loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
+        bind:refresh="onPullDownRefresh"
+        bind:scroll="onScroll"
+        bind:scrolltolower="onScrollToBottom"
+        using-custom-navbar="{{true}}"
+>
+    <l-tabs hasLine="{{false}}"
+            active-color="#b59758"
+            inactive-color="#959db9"
+            bind:linchange="onTabTabBar"
+            active-key="{{activeKey}}"
+            l-inactive-class="tab-inactive-item"
+            l-active-class="tab-active-item">
+        <l-tabpanel tab="英雄" key="hero" slot="hero">
             <view class="component-switch-filter">
                 <view class="{{selectPos === 'all' ? 'active': ''}}" data-type="all" data-action="position"
                       bind:tap="onSelect">全部位置</view>
@@ -77,17 +77,8 @@
                     </block>
                 </view>
             </view>
-        </t-pull-down-refresh>
-    </l-tabpanel>
-    <l-tabpanel tab="装备" key="equipment" slot="equipment">
-        <t-pull-down-refresh
-                value="{{isRefresh}}"
-                loadingProps="{{loadingProps}}"
-                loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
-                bind:refresh="onPullDownRefresh"
-                bind:scroll="onScroll"
-                using-custom-navbar="{{true}}"
-        >
+        </l-tabpanel>
+        <l-tabpanel tab="装备" key="equipment" slot="equipment">
             <view class="component-switch-filter">
                 <view wx:for="{{models}}"
                       wx:for-item="model"
@@ -144,6 +135,6 @@
                     <lol-dialog payload="{{equipment}}" type="equipment"></lol-dialog>
                 </view>
             </l-mask>
-        </t-pull-down-refresh>
-    </l-tabpanel>
-</l-tabs>
+        </l-tabpanel>
+    </l-tabs>
+</t-pull-down-refresh>

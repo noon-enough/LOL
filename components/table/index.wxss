@@ -154,3 +154,35 @@
 .selected-active {
   border: 4rpx solid #b59758;
 }
+
+.sorter-arrow {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8rpx;
+}
+
+.sorter-arrow .icon {
+  display: block;
+  width: 22rpx;
+  height: 22rpx;
+}
+
+
+.sorter-txt {
+  color: #6c7a95;
+  font-size: 26rpx;
+}
+
+.sorter-txt.active {
+  color: #e8f5ff;
+  font-weight: bolder;
+}
+
+.sorter {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  vertical-align: middle;
+  justify-content: center;
+}

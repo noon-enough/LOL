@@ -12,12 +12,6 @@ export default [
         selectedIconPath:"/assets/tabbar/fight-selected.png"
     },
     {
-        pagePath:"/pages/arena/index",
-        text:"斗魂竞技",
-        iconPath:"/assets/tabbar/arena.png",
-        selectedIconPath:"/assets/tabbar/arena-selected.png"
-    },
-    {
         pagePath:"/pages/database/index",
         text:"资料库",
         iconPath:"/assets/tabbar/databases.png",

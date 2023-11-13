@@ -110,6 +110,8 @@ Page({
 
         that.setData({
             curJob: type,
+            page: 1,
+            isDone: false,
         })
         wx.showLoading()
         that.getArena()
